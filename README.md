@@ -35,16 +35,17 @@
 #アソシエーション設計
 
 ##users
+has_many :group_users  
+has_many :groups, through: :group_users  
 has_many :messages  
-has_many :group_users
 
 ##messages
 belongs_to :user  
 belongs_to :group
 
-##groups
-belongs_to :user  
+##groups 
 has_many :group_users  
+has_many :users, through: :group_users  
 has_many :messages
 
 ##group_users
