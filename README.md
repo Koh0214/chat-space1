@@ -30,33 +30,32 @@ Things you may want to cover:
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
 |id    |||
-|name  |string   |null:false, add_index|
-|email |string   |null:false, unique:true|
-|password|string |null:false|
+|name  |string   |null: false, add_index|
+|email |string   |null: false, unique: true|
+|password|string |null: false|
 
 ##messages
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-|id|text||
-|
-id
-body        :text
-image       :string
-group_id    :integer  ,foreign_key: true
-user_id     :integer  ,null:false, foreign_key: true
+|id|||
+|body|text||
+|image|string||
+|group_id|integer|foreign_key: true|
+|user_id|integer|,null: false, foreign_key: true|
+
 
 ##groups
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-id
-name        :string   ,null:false
+|id|||
+|name|string|null:false|
 
 ##group_users
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-id
-group_id    :integer  ,null:false,foreign_key: true
-user_id     :integer  ,null:false,foreign_key: true
+|id|||
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false,foreign_key: true|
 
 
 #アソシエーション設計
