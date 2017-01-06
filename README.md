@@ -22,7 +22,7 @@
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
 |id|||
-|name|string|null: false|
+|name|string|null: false, unique: true|
 
 ##group_users
 |column|data type|    keys   |
