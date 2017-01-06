@@ -41,21 +41,21 @@ Things you may want to cover:
 |body|text||
 |image|string||
 |group_id|integer|foreign_key: true|
-|user_id|integer|,null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 
 ##groups
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
 |id|||
-|name|string|null:false|
+|name|string|null: false|
 
 ##group_users
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
 |id|||
 |group_id|integer|null: false, foreign_key: true|
-|user_id|integer|null: false,foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
 
 
 #アソシエーション設計
