@@ -1,1 +1,22 @@
 @import "./reset";
+
+header{
+    background-color: deepskyblue;
+    height: 30px;
+}
+
+.left {
+    background-color: red;
+    float: left;
+    height: 980px;
+    width: 300px;
+    .left__header{
+        background-color: #253141;
+        height: 300px;
+    }
+    .left__content{
+        background-color: #2f3e51;
+        height: 680px;
+    }
+}
+
