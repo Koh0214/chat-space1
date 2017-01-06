@@ -34,7 +34,7 @@ password    :string   ,null:false
 
 ##messages
 id
-body        :text     ,null:false
+body        :text
 image       :string
 group_id    :integer
 user_id     :integer  ,null:false
