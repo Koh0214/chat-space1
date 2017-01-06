@@ -3,7 +3,6 @@
 ##users
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-|id    |||
 |name  |string   |null: false, add_index|
 |email |string   |null: false, unique: true|
 |password|string |null: false|
@@ -11,7 +10,6 @@
 ##messages
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-|id|||
 |body|text||
 |image|string||
 |group_id|integer|null: false, foreign_key: true,|
@@ -21,13 +19,11 @@
 ##groups
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-|id|||
 |name|string|null: false, unique: true|
 
 ##group_users
 |column|data type|    keys   |
 |:----:|:-------:|:---------:|
-|id|||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
