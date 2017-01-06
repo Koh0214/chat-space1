@@ -28,7 +28,7 @@ Things you may want to cover:
 
 ##users
 id
-name        :string   ,null:false
+name        :string   ,null:false, add_index
 email       :string   ,null:false, unique: true
 password    :string   ,null:false
 
