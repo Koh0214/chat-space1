@@ -27,6 +27,12 @@ Things you may want to cover:
 #データベース設計
 
 ##users
+|column|data type|    keys   |
+|:----:|:-------:|:---------:|
+|id    |string   |null:false, add_index|
+|name  |string   |null:false, unique:true|
+|email |string   |null:false, unique:true|
+|password|string |null:false|
 id
 name        :string   ,null:false, add_index
 email       :string   ,null:false, unique: true
