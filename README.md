@@ -26,3 +26,28 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+#データベース設計
+
+##users
+id
+name        :string   ,null:false
+email       :string   ,null:false
+password    :string   ,null:false
+
+##messages
+id
+body        :text     ,null:false
+image       :string
+group_id    :integer
+user_id     :integer  ,null:false
+
+##groups
+id
+name        :string   ,null:false
+
+##group_users
+id
+group_id    :integer  ,null:false
+user_id     :integer  ,null:false
