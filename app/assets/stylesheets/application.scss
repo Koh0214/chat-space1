@@ -12,7 +12,7 @@ header{
     width: 300px;
     .left__header{
         background-color: #253141;
-        height: 300px;
+        height: 96px;
     }
     .left__content{
         background-color: #2f3e51;
@@ -22,18 +22,21 @@ header{
 
 .right{
     background-color: #AAAAAA;
-    width: 100px;
+    min-width: 300px;
     float: right;
     .right__header{
+        width: 100vw;
         height: 96px;
         background-color: white;
     }
     .right__content{
-//        height: 30px;
-        background-color: black;
+        width: 100vw;
+        height: 30px;
+        background-color: #AAAAAA;
     }
     .right__footer{
+        width: 100vw;
         height: 90px;
-        background-color: coral;
+        background-color: white;
     }
 }
