@@ -20,3 +20,20 @@ header{
     }
 }
 
+.right{
+    background-color: #AAAAAA;
+    width: 100px;
+    float: right;
+    .right__header{
+        height: 96px;
+        background-color: white;
+    }
+    .right__content{
+//        height: 30px;
+        background-color: black;
+    }
+    .right__footer{
+        height: 90px;
+        background-color: coral;
+    }
+}
