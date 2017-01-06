@@ -36,8 +36,8 @@ password    :string   ,null:false
 id
 body        :text
 image       :string
-group_id    :integer
-user_id     :integer  ,null:false
+group_id    :integer  ,foreign_key: true
+user_id     :integer  ,null:false, foreign_key: true
 
 ##groups
 id
@@ -45,5 +45,5 @@ name        :string   ,null:false
 
 ##group_users
 id
-group_id    :integer  ,null:false
-user_id     :integer  ,null:false
+group_id    :integer  ,null:false,foreign_key: true
+user_id     :integer  ,null:false,foreign_key: true
