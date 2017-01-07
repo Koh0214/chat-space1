@@ -1,55 +1,55 @@
 
 header{
-    background-color: #38AEF0;
-    height: 30px;
+  background-color: #38AEF0;
+  height: 30px;
 }
 
 .content{
-    height: 100vw;
-    min-width: 980px;
+  height: 100vw;
+  min-width: 980px;
 }
 
 .left {
-    height: 100%;
-    width: 300px; 
-    float: left;
-    &__header{
-        background-color: #253141;
-        height: 101px;
-        padding: 0 20px;
-    }
-    &__content{
-        background-color: #2f3e51;
-        height: calc(100% - 41px);
-        padding: 0 20px;
-    }
+  height: 100%;
+  width: 300px; 
+  float: left;
+  &__header{
+      background-color: #253141;
+      height: 101px;
+      padding: 0 20px;
+  }
+  &__content{
+      background-color: #2f3e51;
+      height: calc(100% - 41px);
+      padding: 0 20px;
+  }
 }
 
 .right{
-    width:calc(100vw - 315px);
-    float: left;
-    &__header{
-        background-color: white;
-        height: 101px;
-        padding: 0 40px;
-    }
+  width:calc(100vw - 315px);
+  float: left;
+  &__header{
+      background-color: white;
+      height: 101px;
+      padding: 0 40px;
+  }
 
-    &__content{
-        background-color: #FAFAFA;
-        height: calc(100vw - 101px - 90px);
-        width: 971px;
-        padding: 0 40px 70px 40px;
-        overflow: auto;
-    }
-    &__footer{
-        background-color: #DDDDDD;
-        height: 90px;
-        width: calc(100vw - 315px);
-        position: fixed; right: 0; bottom: 0;
-    }
-    &__footer__box{
-        background-color: white;
-        height: 50px;
-        margin: 20px 150px 20px 40px;
-    }
+  &__content{
+      background-color: #FAFAFA;
+      height: calc(100vw - 101px - 90px);
+      width: 971px;
+      padding: 0 40px 70px 40px;
+      overflow: auto;
+  }
+  &__footer{
+      background-color: #DDDDDD;
+      height: 90px;
+      width: calc(100vw - 315px);
+      position: fixed; right: 0; bottom: 0;
+  }
+  &__footer__box{
+      background-color: white;
+      height: 50px;
+      margin: 20px 150px 20px 40px;
+  }
 }
