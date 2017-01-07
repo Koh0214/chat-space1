@@ -18,13 +18,15 @@ header{
     float: left;
     .left__header{
         background-color: #253141;
-        height: 96px;
+        height: 101px;
         width: 300px;
+        padding: 0 20px 0 20px;
     }
     .left__content{
         background-color: #2f3e51;
-        height: calc(100% - 96px);
+        height: calc(100vw - 101px);
         width: 300px;
+        padding: 0 20px 0 20px;
     }
 }
 
@@ -34,19 +36,22 @@ header{
     float: left;
     .right__header{
         background-color: white;
-        height: 96px;
+        height: 101px;
         width: calc(100vw - 315px);
+        padding: 0 40px 0 40px;
     }
     .right__content{
         background-color: #FAFAFA;
-        height: calc(100vw - 30px - 96px - 90px);
+        height: calc(100vw - 101px - 90px);
         width: calc(100vw - 315px);
+        padding: 0 40px 0 40px;
         overflow: auto;
     }
     .right__footer{
         background-color: #DDDDDD;
         height: 90px;
         width: calc(100vw - 315px);
+//        padding: 0 40px 0 40px;
         position: fixed; right: 0; bottom: 0;
     }
     .right__footer__box{
