@@ -1,5 +1,5 @@
 @import "./reset";
-@import "./contents"
+@import "./contents";
 @import "./clearfix";
 
 header{
@@ -52,5 +52,10 @@ header{
         height: 90px;
         width: calc(100vw - 315px);
         position: fixed; right: 0; bottom: 0;
+    }
+    .right__footer__box{
+        background-color: white;
+        height: 50px;
+        margin: 20px 150px 20px 40px;
     }
 }
