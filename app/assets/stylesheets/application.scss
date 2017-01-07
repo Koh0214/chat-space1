@@ -2,6 +2,8 @@
 @import "./contents";
 @import "font-awesome";
 
+$rightgrey: #DDDDDD;
+
 header{
     background-color: #38AEF0;
     height: 30px;
@@ -16,12 +18,12 @@ header{
     height: 100%;
     width: 300px; 
     float: left;
-    .left__header{
+    &__header{
         background-color: #253141;
         height: 101px;
         padding: 0 20px 0 20px;
     }
-    .left__content{
+    &__content{
         background-color: #2f3e51;
         height: calc(100% - 101px + 70px);
         padding: 0 20px 0 20px;
@@ -29,29 +31,28 @@ header{
 }
 
 .right{
-    height: 100vw;
     width:calc(100vw - 315px);
     float: left;
-    .right__header{
+    &__header{
         background-color: white;
         height: 101px;
         padding: 0 40px 0 40px;
     }
 
-    .right__content{
+    &__content{
         background-color: #FAFAFA;
         height: calc(100vw - 101px - 90px);
         width: 971px;
         padding: 0 40px 70px 40px;
         overflow: auto;
     }
-    .right__footer{
-        background-color: #DDDDDD;
+    &__footer{
+        background-color: $rightgrey;
         height: 90px;
         width: calc(100vw - 315px);
         position: fixed; right: 0; bottom: 0;
     }
-    .right__footer__box{
+    &__footer__box{
         background-color: white;
         height: 50px;
         margin: 20px 150px 20px 40px;
