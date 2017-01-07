@@ -2,6 +2,9 @@ $skyblue:   #38AEF0;
 $darkgrey:  #434A54;
 $rightgrey: #999999;
 
+$font_big   : 20px;
+$font_small : 12px;
+
 header{
     color: white;
     text-align: center;
@@ -11,7 +14,7 @@ header{
 .left{
     color: white;
     .user_name{
-        font-size: 20px;
+        font-size: $font_big;
         font-weight: bold;
         letter-spacing: 1px;
         line-height: 110px;
@@ -38,14 +41,14 @@ header{
 .right{
     .group_name{
         color: $darkgrey;
-        font-size: 20px;
+        font-size: $font_big;
         letter-spacing: 2px;
         padding: 35px 0 15px 0;
     }
 
     .group_member {
         color: $rightgrey;
-        font-size: 12px;
+        font-size: $font_small;
         line-height: 9px;
     }
 
@@ -69,7 +72,7 @@ header{
 
     .timestamp {
         color: $rightgrey;
-        font-size: 12px;
+        font-size: $font_small;
         padding: 50px 40px 10px 0;
         margin-left: 10px;
         float: left;
