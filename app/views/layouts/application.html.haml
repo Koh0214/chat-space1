@@ -11,6 +11,9 @@
     %div.content
       %div.left
         %div.left__header
+          %div.icons
+            %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+            %i.fa.fa-cog{"aria-hidden" => "true"}
           %h5.user_name kohei
         %div.left__content
           %p.group_name_small koheiとゆかいな仲間たち
@@ -94,5 +97,7 @@
         %div.right__footer
           %p.send_button SEND
           %div.right__footer__box
+            %div.photo_icon
+              %i.fa.fa-picture-o{"aria-hidden" => "true"}
             %p.box_message type your message, yeah
     = yield
