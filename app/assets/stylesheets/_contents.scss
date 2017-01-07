@@ -26,12 +26,21 @@ header{
     padding-bottom: 40px;
 }
 
+.edit_button {
+    color: #38AEF0;
+    margin-top: 28px;
+    border: solid;
+    border-width: 2px;
+    border-color: #38AEF0;
+    padding: 8px 20px 8px 20px;
+    float: right;
+}
+
 //----↓↓ ここからright側 ↓↓-------------------------
 
 .group_name{
     color: #333333;
     font-size: 20px;
-    font-weight: bold;
     padding: 35px 0 15px 0;
 }
 

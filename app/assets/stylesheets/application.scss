@@ -13,19 +13,17 @@ header{
 }
 
 .left {
-    height: 100vw;
+    height: 100%;
     width: 300px; 
     float: left;
     .left__header{
         background-color: #253141;
         height: 101px;
-        width: 300px;
         padding: 0 20px 0 20px;
     }
     .left__content{
         background-color: #2f3e51;
-        height: calc(100vw - 101px);
-        width: 300px;
+        height: calc(100% - 101px + 70px);
         padding: 0 20px 0 20px;
     }
 }
@@ -37,21 +35,20 @@ header{
     .right__header{
         background-color: white;
         height: 101px;
-        width: calc(100vw - 315px);
         padding: 0 40px 0 40px;
     }
+
     .right__content{
         background-color: #FAFAFA;
         height: calc(100vw - 101px - 90px);
-        width: calc(100vw - 315px);
-        padding: 0 40px 0 40px;
+        width: 971px;
+        padding: 0 40px 70px 40px;
         overflow: auto;
     }
     .right__footer{
         background-color: #DDDDDD;
         height: 90px;
         width: calc(100vw - 315px);
-//        padding: 0 40px 0 40px;
         position: fixed; right: 0; bottom: 0;
     }
     .right__footer__box{
@@ -59,4 +56,5 @@ header{
         height: 50px;
         margin: 20px 150px 20px 40px;
     }
+
 }
