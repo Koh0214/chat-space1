@@ -8,14 +8,14 @@
   %body
     %header
       %p チャットグループが作成されました
-    %div.content
-      %div.left
-        %div.left__header
-          %div.icons
+    .content
+      .left
+        .left__header
+          .icons
             %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
             %i.fa.fa-cog{"aria-hidden" => "true"}
           %h5.user_name kohei
-        %div.left__content
+        .left__content
           %p.group_name_small koheiとゆかいな仲間たち
           %p.group_message やっほおおおおお
 
@@ -28,12 +28,12 @@
           %p.group_name_small koheiとゆかいな仲間たち
           %p.group_message やっほおおおおお
 
-      %div.right
-        %div.right__header
+      .right
+        .right__header
           %p.edit_button Edit
           %h4.group_name koheiの家
           %p.group_member Members : kohei,kimura humino, cat, sasaki nozomi
-        %div.right__content
+        .right__content
           %h5.post_name kohei
           %p.timestamp 1993/02/14 07:32:14
           %p.post 猫って最高だよね。
@@ -94,10 +94,10 @@
           %p.timestamp 1993/02/14 07:32:14
           %p.post にゃおん。
 
-        %div.right__footer
+        .right__footer
           %p.send_button SEND
-          %div.right__footer__box
-            %div.photo_icon
+          .right__footer__box
+            .photo_icon
               %i.fa.fa-picture-o{"aria-hidden" => "true"}
             %p.box_message type your message, yeah
     = yield
