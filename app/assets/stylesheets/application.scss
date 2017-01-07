@@ -3,13 +3,13 @@
 @import "./clearfix";
 
 header{
-    background-color: deepskyblue;
+    background-color: #38AEF0;
     height: 30px;
 }
 
 .content{
-    min-width: 980px;
     height: 100vw;
+    min-width: 980px;
 }
 
 .left {
@@ -20,13 +20,11 @@ header{
         background-color: #253141;
         height: 96px;
         width: 300px;
-        position: fixed; top: 0; left: 0;
     }
     .left__content{
         background-color: #2f3e51;
-        height: 1000px;
+        height: calc(100% - 96px);
         width: 300px;
-        position: fixed; top: 96px; left: 0;
     }
 }
 
@@ -38,14 +36,12 @@ header{
         background-color: white;
         height: 96px;
         width: calc(100vw - 315px);
-        position: fixed; top: 0; right: 0;
-        z-index: 50;
     }
     .right__content{
         background-color: #FAFAFA;
-        height: calc(100vw - 96px - 90px);
+        height: calc(100vw - 30px - 96px - 90px);
         width: calc(100vw - 315px);
-        padding-top: 96px;
+        overflow: auto;
     }
     .right__footer{
         background-color: #DDDDDD;
