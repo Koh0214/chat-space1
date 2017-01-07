@@ -1,42 +1,55 @@
 @import "./reset";
+@import "./clearfix";
 
 header{
     background-color: deepskyblue;
     height: 30px;
 }
 
+.content{
+    min-width: 980px;
+    height: 100vw;
+}
+
 .left {
-    background-color: red;
+    height: 100vw;
+    width: 300px; 
     float: left;
-    height: 980px;
-    width: 300px;
     .left__header{
         background-color: #253141;
         height: 96px;
+        width: 300px;
+        position: fixed; top: 0; left: 0;
     }
     .left__content{
         background-color: #2f3e51;
-        height: 680px;
+        height: 1000px;
+        width: 300px;
+        position: fixed; top: 96px; left: 0;
     }
 }
 
 .right{
-    background-color: #AAAAAA;
-    min-width: 300px;
-    float: right;
+    height: 100vw;
+    width:calc(100vw - 315px);
+    float: left;
     .right__header{
-        width: 100vw;
-        height: 96px;
         background-color: white;
+        height: 96px;
+        width: calc(100vw - 315px);
+        position: fixed; top: 0; right: 0;
+        z-index: 50;
     }
     .right__content{
-        width: 100vw;
-        height: 30px;
-        background-color: #AAAAAA;
+        background-color: #FAFAFA;
+        height: calc(100vw - 96px - 90px);
+        width: calc(100vw - 315px);
+        padding-top: 96px;
     }
     .right__footer{
-        width: 100vw;
+        background-color: #DDDDDD;
         height: 90px;
-        background-color: white;
+        width: calc(100vw - 315px);
+        position: fixed; right: 0; bottom: 0;
     }
 }
