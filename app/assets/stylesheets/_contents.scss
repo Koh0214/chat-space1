@@ -1,103 +1,103 @@
+
+
 header{
     color: white;
     text-align: center;
     line-height: 30px;
 }
 
-//----↓↓ ここからleft側 ↓↓-------------------------
-
 .left{
     color: white;
+    .user_name{
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 110px;
+    }
+
+    .group_name_small{
+        font-size: 15px;
+        padding: 20px 0 5px 0;
+    }
+
+    .group_message{
+        font-size: 11px;
+        padding-bottom: 40px;
+    }
+
+    .icons {
+        font-size: 23px;
+        margin-top: 40px;
+        float: right;
+    }
 }
 
-.user_name{
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    line-height: 110px;
-}
 
-.group_name_small{
-    font-size: 15px;
-    padding: 20px 0 5px 0;
-}
+.right{
+    .group_name{
+        color: #333333;
+        font-size: 20px;
+        letter-spacing: 2px;
+        padding: 35px 0 15px 0;
+    }
 
-.group_message{
-    font-size: 11px;
-    padding-bottom: 40px;
-}
+    .group_member {
+        color: #999999;
+        font-size: 12px;
+        line-height: 9px;
+    }
 
-.edit_button {
-    color: #38AEF0;
-    margin-top: 28px;
-    border: solid;
-    border-width: 2px;
-    border-color: #38AEF0;
-    padding: 8px 20px 8px 20px;
-    float: right;
-}
+    .edit_button {
+        color: #38AEF0;
+        margin-top: 28px;
+        border: solid;
+        border-width: 2px;
+        border-color: #38AEF0;
+        padding: 8px 20px 8px 20px;
+        float: right;
+    }
 
-.icons {
-    font-size: 23px;
-    margin-top: 40px;
-    float: right;
-}
+    .post_name {
+        color: #434A54;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 46px 0 10px 0;
+        float: left;
+    }
 
-//----↓↓ ここからright側 ↓↓-------------------------
+    .timestamp {
+        color: #999999;
+        font-size: 12px;
+        padding: 50px 40px 10px 0;
+        margin-left: 10px;
+        float: left;
+    }
 
-.group_name{
-    color: #333333;
-    font-size: 20px;
-    letter-spacing: 2px;
-    padding: 35px 0 15px 0;
-}
+    .post {
+        color: #434A54;
+        font-size: 14px;
+        clear: both;
+    }
 
-.group_member {
-    color: #999999;
-    font-size: 12px;
-    line-height: 9px;
-}
+    .box_message {
+        color: #ABABAB;
+        font-size: 16px;
+        line-height: 50px;
+        padding-left: 10px;
+    }
 
-.post_name {
-    color: #434A54;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 46px 0 10px 0;
-    float: left;
-}
+    .send_button {
+        color: white;
+        background-color: #38AEF0;
+        margin-top: 20px;
+        margin-right: 40px;
+        padding: 12px 25px 12px 25px;
+        float: right;
+    }
 
-.timestamp {
-    color: #999999;
-    font-size: 12px;
-    padding: 50px 40px 10px 0;
-    margin-left: 10px;
-    float: left;
-}
-
-.post {
-    color: #434A54;
-    font-size: 14px;
-    clear: both;
-}
-
-.box_message {
-    color: #ABABAB;
-    font-size: 16px;
-    line-height: 50px;
-    padding-left: 10px;
-}
-
-.send_button {
-    color: white;
-    background-color: #38AEF0;
-    margin-top: 20px;
-    margin-right: 40px;
-    padding: 12px 25px 12px 25px;
-    float: right;
-}
-
-.photo_icon {
-    color: #434A54;
-    float: right;
-    margin: 12px 15px 0 0;
+    .photo_icon {
+        color: #434A54;
+        float: right;
+        margin: 12px 15px 0 0;
+    }
 }
