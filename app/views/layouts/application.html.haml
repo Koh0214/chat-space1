@@ -6,15 +6,34 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    / %header
+    %header
+      %p チャットグループが作成されました
     %div.content
       %div.left
         %div.left__header
+          %h5.user_name Kohei
         %div.left__content
+          %p.group_name_small koheiとゆかいな仲間たち
+          %p.group_message やっほおおおおお
+
+          %p.group_name_small koheiとゆかいな仲間たち
+          %p.group_message やっほおおおおお
+
+          %p.group_name_small koheiとゆかいな仲間たち
+          %p.group_message やっほおおおおお
+
+          %p.group_name_small koheiとゆかいな仲間たち
+          %p.group_message やっほおおおおお
+
       %div.right
         %div.right__header
+          %h4.group_name koheiの家
+          %p.group_member kohei,kimura humino, cat, sasaki nozomi
         %div.right__content
-          %p aaaaaaaaaaaaaaaaaaaaa
+          %h5.post_name kohei
+          %p.post 猫って最高だよね。
+          %p.timestamp 1993/02/14 07:32:14
         %div.right__footer
           %div.right__footer__box
+            %p.box_message type your message, yeah
     = yield
