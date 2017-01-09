@@ -5,7 +5,8 @@
     .left__header
       .icons
         %i.fa.fa-pencil-square-o{aria: { hidden: true } }
-        %i.fa.fa-cog{aria: {hidden: true } }
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog{aria: {hidden: true } }
       %h5.user_name kohei
     .left__content
       %p.group_name_small koheiとゆかいな仲間たち
