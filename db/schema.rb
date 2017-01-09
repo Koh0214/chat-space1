@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170109025056) do
+ActiveRecord::Schema.define(version: 20170109025425) do
 
   create_table "group_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "group_id",   null: false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170109025056) do
     t.string   "password",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_users_on_name", using: :btree
   end
 
 end
