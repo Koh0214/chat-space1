@@ -1,3 +1,11 @@
+@mixin clearfix() {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
 .account-page {
   .account-page__inner {
     width: 980px;
@@ -8,13 +16,9 @@
     border-radius: 5px;
 
     .account-page__inner--left, .account-page__inner--right {
+      @include clearfix();
       float: left;
       width: 50%;
-    }
-    &:after {
-      clear: both;
-      content: "";
-      display: block;
     }
   }
 
