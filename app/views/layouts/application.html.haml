@@ -1,6 +1,10 @@
 !!!
 %html
   %head
+    - if notice
+      %p.alert.alert-notice.header= notice
+    - if alert
+      %p.alert.alert-error.header= alert
     %title ChatSpace
     = stylesheet_link_tag    'application', media: 'all', data: { turbolinks: { track: true } }
     = javascript_include_tag 'application', data: { turbolinks: { track: true } }
