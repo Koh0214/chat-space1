@@ -71,5 +71,4 @@ activerecord:
            password: パスワード
            password_confirmation: パスワード確認
            email: メールアドレス
-           
         
