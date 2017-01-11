@@ -12,4 +12,11 @@ describe User do
     user.valid?
     expect(user.errors[:email]).to include("が入力されていません。")
   end
+
+  it "is invalid without a password" do
+    user = User.new(name: "kishi", email: "kkk@gmail.com" , password: "", password_confirmation: "00000000")
+    user.valid?
+    expect(user.errors[:password]).to include("が入力されていません。")
+  end
 end
+
