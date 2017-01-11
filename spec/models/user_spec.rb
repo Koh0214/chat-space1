@@ -6,6 +6,13 @@ describe User do
     expect(user).to be_valid
   end
 
+  it "is invalid with a duplicate email address" do
+    user = create(:user)
+    another_user = build(:user, email: user.email)
+    another_user.valid?
+    expect(another_user.errors[:email]).to include("は既に使用されています。")
+  end
+
   it "is invalid without a name" do
   	user = build(:user, name: "")
   	user.valid?
