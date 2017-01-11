@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe User do
   describe '#create' do
     it "is invalid without a name" do
@@ -8,7 +9,6 @@ describe User do
     end
   end
 end
-
 
 describe User do
   describe '#create' do
