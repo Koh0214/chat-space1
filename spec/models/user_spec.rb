@@ -6,6 +6,11 @@ describe User do
     expect(user).to be_valid
   end
 
+  it "is valid with a password that has more than 8 characters " do
+    user = build(:user, password: "12345678", password_confirmation: "12345678")
+    expect(user).to be_valid
+  end
+
   it "is invalid without a name" do
   	user = build(:user, name: "")
   	user.valid?
@@ -18,6 +23,18 @@ describe User do
     expect(user.errors[:email]).to include("が入力されていません。")
   end
 
+  it "is invalid without a password" do
+    user = build(:user, password: "")
+    user.valid?
+    expect(user.errors[:password]).to include("が入力されていません。")
+  end
+
+  it "is invalid without a password_confirmation" do
+    user = build(:user, password_confirmation: "")
+    user.valid?
+    expect(user.errors[:password_confirmation][0]).to include("が内容とあっていません。")
+  end
+
   it "is invalid with a duplicate email address" do
     user = create(:user)
     another_user = build(:user, email: user.email)
@@ -25,27 +42,10 @@ describe User do
     expect(another_user.errors[:email]).to include("は既に使用されています。")
   end
 
-  it "is invalid without a password" do
-    user = build(:user, password: "")
-    user.valid?
-    expect(user.errors[:password]).to include("が入力されていません。")
-  end
-
   it "is invalid with a password that has less than 8 characters " do
     user = build(:user, password: "1234567")
     user.valid?
     expect(user.errors[:password][0]).to include("は8文字以上に設定して下さい。")
-  end
-
-  it "is valid with a password that has more than 8 characters " do
-    user = build(:user, password: "12345678", password_confirmation: "12345678")
-    expect(user).to be_valid
-  end
-
-  it "is invalid without password_confirmation" do
-    user = build(:user, password_confirmation: "")
-    user.valid?
-    expect(user.errors[:password_confirmation][0]).to include("が内容とあっていません。")
   end
 end
 
