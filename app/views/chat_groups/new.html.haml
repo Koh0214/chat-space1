@@ -22,12 +22,11 @@
         #chat-group-users
           #chat-group-user-22.chat-group-user.clearfix
             %input{ name: "chat_group[user_ids][]", type: "hidden", value: "22" }/
-
             = collection_check_boxes(:group, :group_users, User.all, :id, :name) do |b|
               = b.label { b.check_box + b.text }
-
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
         %input.chat-group-form__action-btn{ data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }/
 
+    
