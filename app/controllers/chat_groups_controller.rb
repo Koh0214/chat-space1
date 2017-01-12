@@ -11,8 +11,7 @@ class ChatGroupsController < ApplicationController
 
 	private
 	def set_params
-		params.require(:group).permit(:group_users => [])
-		params.require(:chat_group).permit(:name, :user_ids => [])
+		params.require(:chat_group).permit(:name, :user_ids => []).merge(:group_users, params[:group][:group_users])
 	end
 
 end
