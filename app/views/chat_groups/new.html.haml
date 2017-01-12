@@ -14,6 +14,12 @@
       .chat-group-form__field--right
         .chat-group-form__search.clearfix
           %input#user-search-field.chat-group-form__input{ placeholder: "追加したいユーザー名を入力してください", type: "text" }/
+          = form_tag '/sample/confirm', method: :post do
+            - %w(岸本晃平 木村文乃 佐々木希 新垣結衣 水谷望愛 猫).each do |item|
+              %label
+                = check_box_tag 'sample_form[colors][]', item
+                = item
+            = submit_tag('送信')
         #user-search-result
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
