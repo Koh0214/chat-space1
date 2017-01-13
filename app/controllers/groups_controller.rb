@@ -14,12 +14,11 @@ class GroupsController < ApplicationController
 
 	def create
 		Group.create(set_params)
-		@user_ids = user_ids
+		@user_ids = set_params[:user_ids]
 		redirect_to :root
 	end
 
 	def update
-		binding.pry
 		group = Group.find(params[:id])
 		group.update(set_params)
 	end
