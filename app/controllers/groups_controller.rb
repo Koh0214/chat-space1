@@ -17,6 +17,12 @@ class GroupsController < ApplicationController
 		redirect_to :root
 	end
 
+	def update
+		# こんな感じでアップデートする
+		# tweet = Tweet.find(params[:id])
+  #   tweet.update(tweet_params) if tweet.user_id == current_user.id
+	end
+
 	private
 	def set_params
 		params.require(:group).permit(:name, { user_ids: [] })
