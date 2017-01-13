@@ -18,6 +18,8 @@ class GroupsController < ApplicationController
 	end
 
 	def update
+		group = Group.find(params[:id])
+		group.update(set_params)
 		# こんな感じでアップデートする
 		# tweet = Tweet.find(params[:id])
   #   tweet.update(tweet_params) if tweet.user_id == current_user.id
