@@ -1,0 +1,14 @@
+.content
+  .left
+    .left__header
+      .icons
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o{ aria: { hidden: true } }
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog{ aria: { hidden: true } }
+      %h5.user_name kohei
+    .left__content
+      - @groups.each do |group| 
+          %p.group_name_small 
+            = group.name
+          %p.group_message aaaaaaaaaaaa
