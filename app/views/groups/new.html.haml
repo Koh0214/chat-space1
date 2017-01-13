@@ -19,9 +19,10 @@
       .chat-group-form__field--right
         #chat-group-users
           #chat-group-user-22.chat-group-user.clearfix
-            / %input{ name: "chat_group[user_ids][]", type: "hidden", value: "22" }/
-            = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |b|
-              = b.label { b.check_box + b.text }
+            / / %input{ name: "chat_group[user_ids][]", type: "hidden", value: "22" }/
+            = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |t|
+              = t.label { t.check_box + t.text }
+
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
