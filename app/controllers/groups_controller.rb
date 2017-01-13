@@ -8,13 +8,13 @@ class GroupsController < ApplicationController
 	end
 
 	def create
-		# Group.create(name: set_params[:name])
-		# redirect_to :root
+		Group.create(set_params)
+		redirect_to :root
 	end
 
 	private
 	def set_params
-		# params.require(:chat_group).permit(:name, :user_ids => []).merge(:group_users, params[:group][:group_users])
+		params.require(:group).permit(:name, { user_ids: [] })
 	end
-	
+
 end
