@@ -14,7 +14,6 @@
 }
 
 .left {
-  height: 100%;
   width: 300px; 
   float: left;
   &__header{
@@ -48,7 +47,7 @@
   &__footer{
     background-color: #DDDDDD;
     height: 90px;
-    width: calc(100vw - 315px);
+    width: calc(100% - 300px);
     position: fixed; right: 0; bottom: 0;
   }
   &__footer__box{
