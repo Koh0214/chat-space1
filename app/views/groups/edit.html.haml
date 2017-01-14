@@ -1,6 +1,6 @@
 .chat-group-form
   %h1 チャットグループ編集
-  = form_for @group, html: {id: 'edit_chat_group_22', class: 'edit_chat_group' } do |f|
+  = form_for @group, html: { id: 'edit_chat_group_22', class: 'edit_chat_group' } do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :name, class: 'chat-group-form__label'
@@ -16,7 +16,7 @@
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
-        = collection_check_boxes(:group, :user_ids, User.all, :id, :name, checked: @user_ids) do |t|
+        = collection_check_boxes( :group, :user_ids, User.all, :id, :name, checked: @user_ids ) do |t|
           - t.label { t.check_box + t.text }
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
