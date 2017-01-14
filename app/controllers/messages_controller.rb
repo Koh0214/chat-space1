@@ -6,12 +6,16 @@ class MessagesController < ApplicationController
   	@message = Message.new
   end
 
-  def new
-  end
-
   def create
-  	message = Message.create(set_params)
-		# redirect_to :root
+  	case params[:message][:body].empty?
+  	when true
+  		# window.alert("何か書かないと送信できません")
+  		redirect_to request.original_url, notice: '何か書かないと送信できません'
+  		# flash.now[:notice] = '何か書かないと送信できません'
+  	when false
+	  	message = Message.create(set_params)
+	  	redirect_to request.original_url
+	  end
   end
 
   private
