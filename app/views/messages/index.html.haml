@@ -79,7 +79,7 @@
       %h5.post_name cat
       %p.timestamp 1993/02/14 07:32:14
       %p.post にゃおん。
-
+    
     .right__footer
       = form_for @message, :url => {:action => :create} do |f|
         = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'right__footer__box'
