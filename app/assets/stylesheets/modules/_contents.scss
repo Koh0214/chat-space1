@@ -56,7 +56,7 @@
     border: solid;
     border-width: 2px;
     border-color: $skyblue;
-    padding: 8px 20px 8px 20px;
+    padding: 8px 20px;
     float: right;
   }
 
@@ -95,7 +95,7 @@
     font-size: 20px;
     margin-top: 23px;
     margin-right: 40px;
-    padding: 12px 25px 12px 25px;
+    padding: 12px 25px;
     border-style: none;
     float: right;
   }
@@ -103,6 +103,7 @@
   .fa-picture-o {
     color: $darkgrey;
     float: right;
-    position: absolute; top: 40px; right: 200px;
+    position: absolute;
+    top: 40px; right: 200px;
   }
 }
