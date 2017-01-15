@@ -6,12 +6,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    case params[:message][:body].empty?
-    when true
-      redirect_to request.original_url, notice: '何か書かないと送信できません'
-    when false
+    if params[:message][:body].empty?
+      redirect_to group_messages_path, notice: '何か書かないと送信できません'
+    else
       message = Message.create(set_params)
-      redirect_to request.original_url
+      redirect_to group_messages_path
     end
   end
 
