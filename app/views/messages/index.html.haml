@@ -81,11 +81,7 @@
       %p.post にゃおん。
 
     .right__footer
-      %p.send_button SEND
-      = form_for @message, :url => {:action => :create}, html: {class: 'right__footer__box'} do |f|
-        = f.text_field :body, placeholder: "type your message, yeah"
-        = f.button :save, html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
-      .right__footer__box
-        .photo_icon
-          %i.fa.fa-picture-o{ aria: { hidden: true } }
-        %p.box_message type your message, yeah
+      = form_for @message, :url => {:action => :create} do |f|
+        = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'right__footer__box'
+        %i.fa.fa-picture-o{ aria: { hidden: true } } 
+        = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }

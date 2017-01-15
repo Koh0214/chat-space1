@@ -53,6 +53,8 @@
   &__footer__box{
     background-color: white;
     height: 50px;
-    margin: 20px 150px 20px 40px;
+    width: calc(100% - 250px);
+    margin: 20px 20px 20px 40px;
+    padding: 0 15px;
   }
 }
