@@ -81,7 +81,7 @@
       %p.post にゃおん。
     
     .right__footer
-      = form_for @message, :url => {:action => :create} do |f|
+      = form_for([@group, @message]) do |f|
         = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'right__footer__box'
         %i.fa.fa-picture-o{ aria: { hidden: true } } 
         = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
