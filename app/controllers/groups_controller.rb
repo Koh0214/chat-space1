@@ -28,8 +28,11 @@ class GroupsController < ApplicationController
 
   def update
     group = Group.find(params[:id])
-    group.update(set_params)
-    redirect_to :root
+    if group.update(set_params)
+      redirect_to :root
+    else
+      redirect_to edit_group_path, alert: 'グループの更新に失敗しました'
+    end
   end
 
   private
