@@ -30,6 +30,7 @@
 
 .right{
   width:calc(100vw - 315px);
+  height: 100%;
   float: left;
   &__header{
     background-color: white;
@@ -38,7 +39,7 @@
   }
   &__content{
     background-color: #FAFAFA;
-    height: 2600px;
+    height: calc(100% + 94px);
     width: 971px;
     padding: 0 40px 70px 40px;
     overflow: auto;
