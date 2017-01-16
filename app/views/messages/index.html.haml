@@ -9,11 +9,7 @@
       %h5.user_name #{current_user.name}
     .left__content
       - @groups.each do |group| 
-        = link_to group_messages_path(group) do
-          %p.group_name_small 
-            = group.name
-          %p.group_message
-            = group.messages.last[:body]
+        = render partial: "group", locals: { group: group }
   .right
     .right__header
       = link_to edit_group_path(@group) do
@@ -23,15 +19,9 @@
         Members:
         - @group.group_users.each do |group_user|
           = group_user.user.name
-
     .right__content
       - @group.messages.each do |message|
-        %h5.post_name 
-          = message.user.name
-        %p.timestamp
-          = message.created_at
-        %p.post
-          = message.body
+        = render partial: "message", locals: { message: message}
 
     .right__footer
       = form_for([@group, @message]) do |f|
