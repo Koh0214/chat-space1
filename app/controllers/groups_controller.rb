@@ -37,6 +37,6 @@ class GroupsController < ApplicationController
   end
 
   def move_to_registration
-    redirect_to new_user_session_path unless user_signed_in?
+    redirect_to new_user_session_path, notice: 'サービスの使用前にログインが必要です' unless user_signed_in?
   end
 end
