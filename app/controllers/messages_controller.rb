@@ -7,10 +7,14 @@ class MessagesController < ApplicationController
 
   def create
     if params[:message][:body].present?
-      message = current_user.messages.create(set_params)
-      redirect_to group_messages_path
+      message = current_user.messages.new(set_params)
+      if message.save
+        redirect_to group_messages_path
+      else
+        redirect_to group_messages_path, alert: '送信に失敗しました'
+      end
     else
-      redirect_to group_messages_path, notice: '何か書かないと送信できません'
+      redirect_to group_messages_path, alert: '何か書かないと送信できません'
     end
   end
 
