@@ -15,7 +15,6 @@ class GroupsController < ApplicationController
   def create 
     group = Group.new(set_params)
     if group.save
-      @user_ids = set_params[:user_ids]
       redirect_to :root
     else
       redirect_to new_group_path, alert: 'グループ名と1名以上のメンバーは必須です'

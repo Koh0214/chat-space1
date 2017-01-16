@@ -16,7 +16,7 @@
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
-        = collection_check_boxes( :group, :user_ids, User.all, :id, :name, checked: @user_ids ) do |t|
+        = collection_check_boxes( :group, :user_ids, User.all, :id, :name) do |t|
           - t.label { t.check_box + t.text }
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
