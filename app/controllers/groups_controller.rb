@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   before_action :move_to_registration
 
+  def find_group_id
+    Group.find(params[:id])
+  end
+
   def index
     @groups = current_user.groups
   end
@@ -14,16 +18,16 @@ class GroupsController < ApplicationController
     if group.save
       redirect_to :root
     else
-      redirect_to new_group_path, alert: 'グループ名と1名以上のメンバーは必須です'
+      redirect_to new_group_path, alert: 'グループの作成に失敗しました'
     end
   end
 
   def edit
-    @group = Group.find(params[:id])
+    @group = find_group_id
   end
 
   def update
-    group = Group.find(params[:id])
+    group = find_group_id
     if group.update(set_params)
       redirect_to :root
     else
