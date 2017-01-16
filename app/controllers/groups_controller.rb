@@ -1,11 +1,8 @@
 class GroupsController < ApplicationController
+  before_action :move_to_registration
 
   def index
-    if user_signed_in?
-      @groups = current_user.groups
-    else
-      redirect_to new_user_session_path
-    end
+    @groups = current_user.groups
   end
 
   def new
@@ -39,4 +36,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, { user_ids: [] })
   end
 
+  def move_to_registration
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 end
