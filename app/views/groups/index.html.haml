@@ -8,5 +8,5 @@
           %i.fa.fa-cog{ aria: { hidden: true } }
       %h5.user_name #{ current_user.name }
     .left__content
-      - @groups.each do |group| 
-        = render partial: "shared/group", locals: { group: group }
+      - @groups.each do |partial_group| 
+        = render partial: "shared/group", locals: { group: partial_group }

@@ -8,8 +8,8 @@
           %i.fa.fa-cog{ aria: { hidden: true } }
       %h5.user_name #{ current_user.name }
     .left__content
-      - @groups.each do |group| 
-        = render partial: "shared/group", locals: { group: group }
+      - @groups.each do |partial_group| 
+        = render partial: "shared/group", locals: { group: partial_group }
   .right
     .right__header
       = link_to edit_group_path(@group) do
@@ -20,8 +20,8 @@
         - @group.group_users.each do |group_user|
           = group_user.user.name
     .right__content
-      - @group.messages.each do |message|
-        = render partial: "shared/message", locals: { message: message }
+      - @group.messages.each do |partial_message|
+        = render partial: "shared/message", locals: { message: partial_message }
 
     .right__footer
       = form_for([@group, @message]) do |f|
