@@ -9,7 +9,7 @@
       %h5.user_name #{ current_user.name }
     .left__content
       - @groups.each do |group| 
-        = render partial: "group", locals: { group: group }
+        = render partial: "shared/group", locals: { group: group }
   .right
     .right__header
       = link_to edit_group_path(@group) do
@@ -21,7 +21,7 @@
           = group_user.user.name
     .right__content
       - @group.messages.each do |message|
-        = render partial: "message", locals: { message: message }
+        = render partial: "shared/message", locals: { message: message }
 
     .right__footer
       = form_for([@group, @message]) do |f|

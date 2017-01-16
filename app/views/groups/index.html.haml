@@ -6,10 +6,7 @@
           %i.fa.fa-pencil-square-o{ aria: { hidden: true } }
         = link_to edit_user_registration_path do
           %i.fa.fa-cog{ aria: { hidden: true } }
-      %h5.user_name kohei
+      %h5.user_name #{ current_user.name }
     .left__content
       - @groups.each do |group| 
-        = link_to group_messages_path(group) do
-          %p.group_name_small 
-            = group.name
-          %p.group_message aaaaaaaaaaaa
+        = render partial: "shared/group", locals: { group: group }
