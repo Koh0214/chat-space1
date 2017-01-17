@@ -39,10 +39,6 @@ class GroupsController < ApplicationController
     redirect_to new_user_session_path, notice: 'サービスの使用前にログインが必要です' unless user_signed_in?
   end
 
-  def find_group_id
-    Group.find(params[:id])
-  end
-
   def set_group
     @group = Group.find(params[:id])
   end
