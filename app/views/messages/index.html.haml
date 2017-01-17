@@ -6,89 +6,23 @@
           %i.fa.fa-pencil-square-o{ aria: { hidden: true } }
         = link_to edit_user_registration_path do
           %i.fa.fa-cog{ aria: { hidden: true } }
-      %h5.user_name kohei
+      %h5.user_name #{ current_user.name }
     .left__content
-      %p.group_name_small koheiとゆかいな仲間たち
-      %p.group_message やっほおおおおお
-
-      %p.group_name_small koheiとゆかいな仲間たち
-      %p.group_message やっほおおおおお
-
-      %p.group_name_small koheiとゆかいな仲間たち
-      %p.group_message やっほおおおおお
-
-      %p.group_name_small koheiとゆかいな仲間たち
-      %p.group_message やっほおおおおお
-
+      = render partial: "shared/group", collection: @groups
   .right
     .right__header
-      %p.edit_button Edit
-      %h4.group_name koheiの家
-      %p.group_member Members : kohei,kimura humino, cat, sasaki nozomi
+      = link_to edit_group_path(@group) do
+        %p.edit_button Edit
+      %h4.group_name #{ @group.name }
+      %p.group_member
+        Members:
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
     .right__content
-      %h5.post_name kohei
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post 猫って最高だよね。
-
-      %h5.post_name kimura humino
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post わかる！かわいい！
-
-      %h5.post_name cat
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post にゃおん。
-
-      %h5.post_name kohei
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post 猫って最高だよね。
-
-      %h5.post_name kimura humino
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post わかる！かわいい！
-
-      %h5.post_name cat
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post にゃおん。
-
-      %h5.post_name kohei
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post 猫って最高だよね。
-
-      %h5.post_name kimura humino
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post わかる！かわいい！
-
-      %h5.post_name cat
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post にゃおん。
-
-      %h5.post_name kohei
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post 猫って最高だよね。
-
-      %h5.post_name kimura humino
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post わかる！かわいい！
-
-      %h5.post_name cat
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post にゃおん。
-
-      %h5.post_name kohei
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post 猫って最高だよね。
-
-      %h5.post_name kimura humino
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post わかる！かわいい！
-
-      %h5.post_name cat
-      %p.timestamp 1993/02/14 07:32:14
-      %p.post にゃおん。
+      = render partial: "shared/message", collection: @messages
 
     .right__footer
-      %p.send_button SEND
-      .right__footer__box
-        .photo_icon
-          %i.fa.fa-picture-o{ aria: { hidden: true } }
-        %p.box_message type your message, yeah
+      = form_for([@group, @message]) do |f|
+        = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'right__footer__box'
+        %i.fa.fa-picture-o{ aria: { hidden: true } } 
+        = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }

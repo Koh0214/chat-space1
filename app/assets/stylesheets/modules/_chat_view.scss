@@ -14,7 +14,6 @@
 }
 
 .left {
-  height: 100%;
   width: 300px; 
   float: left;
   &__header{
@@ -31,29 +30,31 @@
 
 .right{
   width:calc(100vw - 315px);
+  height: 100%;
   float: left;
   &__header{
     background-color: white;
     height: 101px;
     padding: 0 40px;
   }
-
   &__content{
     background-color: #FAFAFA;
-    height: calc(100vw - 101px - 90px);
+    height: calc(100% + 94px);
     width: 971px;
-    padding: 0 40px 70px 40px;
+    padding: 0 40px 70px;
     overflow: auto;
   }
   &__footer{
     background-color: #DDDDDD;
     height: 90px;
-    width: calc(100vw - 315px);
+    width: calc(100% - 300px);
     position: fixed; right: 0; bottom: 0;
   }
   &__footer__box{
     background-color: white;
     height: 50px;
-    margin: 20px 150px 20px 40px;
+    width: calc(100% - 250px);
+    margin: 20px 20px 20px 40px;
+    padding: 0 15px;
   }
 }

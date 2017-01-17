@@ -14,11 +14,13 @@
   }
 
   .group_name_small{
+    color: white;
     font-size: 15px;
-    padding: 20px 0 5px 0;
+    padding: 20px 0 5px;
   }
 
   .group_message{
+    color: white;
     font-size: 11px;
     padding-bottom: 40px;
   }
@@ -39,7 +41,7 @@
     color: $darkgrey;
     font-size: $font_big;
     letter-spacing: 2px;
-    padding: 35px 0 15px 0;
+    padding: 35px 0 15px;
   }
 
   .group_member {
@@ -54,7 +56,7 @@
     border: solid;
     border-width: 2px;
     border-color: $skyblue;
-    padding: 8px 20px 8px 20px;
+    padding: 8px 20px;
     float: right;
   }
 
@@ -62,7 +64,7 @@
     color: $darkgrey;
     font-size: 16px;
     font-weight: bold;
-    padding: 46px 0 10px 0;
+    padding: 46px 0 10px;
     float: left;
   }
 
@@ -90,15 +92,19 @@
   .send_button {
     color: white;
     background-color: $skyblue;
-    margin-top: 20px;
+    font-size: 20px;
+    margin-top: 23px;
     margin-right: 40px;
-    padding: 12px 25px 12px 25px;
+    padding: 12px 25px;
+    border-style: none;
     float: right;
   }
 
-  .photo_icon {
+  .fa-picture-o {
     color: $darkgrey;
     float: right;
-    margin: 12px 15px 0 0;
+    position: absolute;
+    top: 40px;
+    right: 200px;
   }
 }

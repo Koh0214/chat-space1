@@ -1,0 +1,11 @@
+.content
+  .left
+    .left__header
+      .icons
+        = link_to new_group_path do
+          %i.fa.fa-pencil-square-o{ aria: { hidden: true } }
+        = link_to edit_user_registration_path do
+          %i.fa.fa-cog{ aria: { hidden: true } }
+      %h5.user_name #{ current_user.name }
+    .left__content
+      = render partial: "shared/group", collection: @groups
