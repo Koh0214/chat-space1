@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
-  def create 
+  def create
     group = Group.new(set_params)
     if group.save
       redirect_to :root
