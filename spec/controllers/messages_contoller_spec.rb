@@ -1,8 +1,13 @@
 require 'rails_helper'
 
-describe MessagesController do
+describe MessagesController, type: :controller do
 
   describe 'GET #index' do
+    let(:user) { FactoryGirl.build(:user) }
+    
+    before do
+      login_user user
+    end
 
     it "renders the :index template" do
       group = create(:group)
