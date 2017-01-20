@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :move_to_registration
+  before_action :authenticate_user!
   before_action :set_group, except: :index
 
   def index
@@ -33,10 +33,6 @@ class GroupsController < ApplicationController
   private
   def set_params
     params.require(:group).permit(:name, { user_ids: [] })
-  end
-
-  def move_to_registration
-    redirect_to new_user_session_path, notice: 'サービスの使用前にログインが必要です' unless user_signed_in?
   end
 
   def set_group
