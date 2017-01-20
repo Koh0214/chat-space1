@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Message do
+
   context "is valid" do
     it "with a body, user_id, group_id" do
       message = build(:message)
