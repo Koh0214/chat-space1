@@ -4,7 +4,7 @@ FactoryGirl.define do
   sequence(:name) { |n| "name#{n}" }
 
   factory :user do
-    name
+    name                  Faker::Name.name
     email                 Faker::Internet.email
     password              pass
     password_confirmation pass
@@ -15,5 +15,5 @@ FactoryGirl.define do
       create(:group_user, user: user, group: temp_group)
     end
   end
-  
+
 end
