@@ -3,15 +3,14 @@ require 'rails_helper'
 describe MessagesController, type: :controller do
 
   describe 'GET #index' do
-    let(:user) { FactoryGirl.build(:user) }
-    
+    let(:user) { FactoryGirl.create(:user) }
+
     before do
       login_user user
     end
 
     it "renders the :index template" do
-      group = create(:group)
-      groups = create_list(:group, 3)
+      group = user.groups.first
       binding.pry
       get :index, params: { group_id: group.id }
       expect(response).to render_template :index
