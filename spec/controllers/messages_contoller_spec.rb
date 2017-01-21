@@ -4,6 +4,7 @@ describe MessagesController, type: :controller do
 
   describe 'GET #index' do
     let(:user) { FactoryGirl.create(:user) }
+    let(:message) { FactoryGirl.create(:message) }
 
     before do
       login_user user
@@ -26,6 +27,14 @@ describe MessagesController, type: :controller do
       groups = user.groups
       get :index, params: { group_id: group.id }
       expect(assigns(:groups)).to eq groups
+    end
+
+    it "assigns the requested contact to @messages" do
+      group = user.groups.first
+      messages = group.messages
+      binding.pry
+      get :index, params: { group_id: group.id }
+      expect(assigns(:messages)).to eq messages
     end
 
   end
