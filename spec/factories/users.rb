@@ -10,7 +10,7 @@ FactoryGirl.define do
 
     after(:create) do |user|
       3.times do
-        FactoryGirl.create(:group_user, user: user, group: create(:group))
+        create(:group_user, user: user, group: create(:group))
       end
     end
   end
