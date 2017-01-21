@@ -50,10 +50,10 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'rails-controller-testing'
 end
 
 gem 'haml-rails'
 gem 'font-awesome-rails'
 gem 'devise'
 gem 'devise-i18n'
-
