@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe MessagesController, type: :controller do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
 
   describe 'GET #index' do
     before do
