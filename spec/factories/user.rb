@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   pass = Faker::Internet.password(8)
   sequence(:name) { |n| "name#{n}" }
 
@@ -15,5 +14,4 @@ FactoryGirl.define do
       create(:group_user, user: user, group: temp_group)
     end
   end
-
 end
