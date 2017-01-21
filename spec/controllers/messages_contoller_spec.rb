@@ -8,32 +8,25 @@ describe MessagesController, type: :controller do
 
     before do
       login_user user
+      @group = user.groups.first
+      get :index, params: { group_id: @group.id }
     end
 
     it "renders the :index template" do
-      group = user.groups.first
-      get :index, params: { group_id: group.id }
       expect(response).to render_template :index
     end
 
     it "assigns the requested contact to @group" do
-      group = user.groups.first
-      get :index, params: { group_id: group.id }
-      expect(assigns(:group)).to eq group
+      expect(assigns(:group)).to eq @group
     end
 
     it "assigns the requested contact to @groups" do
-      group = user.groups.first
       groups = user.groups
-      get :index, params: { group_id: group.id }
       expect(assigns(:groups)).to eq groups
     end
 
     it "assigns the requested contact to @messages" do
-      group = user.groups.first
-      messages = group.messages
-      binding.pry
-      get :index, params: { group_id: group.id }
+      messages = @group.messages
       expect(assigns(:messages)).to eq messages
     end
 

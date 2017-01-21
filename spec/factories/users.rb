@@ -10,9 +10,9 @@ FactoryGirl.define do
     password_confirmation pass
 
     after(:create) do |user|
-      gro = create(:group)
-      create(:message, user: user, group: gro)
-      create(:group_user, user: user, group: gro)
+      temp_group = create(:group)
+      create(:message, user: user, group: temp_group)
+      create(:group_user, user: user, group: temp_group)
     end
   end
 
