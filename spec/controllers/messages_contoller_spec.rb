@@ -11,7 +11,6 @@ describe MessagesController, type: :controller do
 
     it "renders the :index template" do
       group = user.groups.first
-      binding.pry
       get :index, params: { group_id: group.id }
       expect(response).to render_template :index
     end
