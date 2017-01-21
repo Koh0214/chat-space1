@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-	pass = Faker::Internet.password(8)
+  pass = Faker::Internet.password(8)
   sequence(:name) { |n| "name#{n}" }
 
   factory :user do
@@ -15,24 +15,5 @@ FactoryGirl.define do
       create(:group_user, user: user, group: temp_group)
     end
   end
-
-  factory :group do
-    name
-    created_at { Faker::Time.between(2.days.ago, Date.today, :all) }
-    updated_at { Faker::Time.between(2.days.ago, Date.today, :all) }
-  end
-
-  factory :group_user do
-    user
-    group
-  end
-
-  factory :message do
-    user
-    group
-    body    Faker::Lorem.sentence
-    image   "hoge.png"
-    created_at { Faker::Time.between(2.days.ago, Date.today, :all) }
-  end
-
+  
 end
