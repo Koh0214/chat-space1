@@ -48,11 +48,11 @@ describe User do
         expect(another_user.errors[:email]).to include("は既に使用されています。")
       end
 
-      # it "is invalid with a password that has less than 8 characters " do
-      #   user = build(:user, password: "12345")
-      #   user.valid?
-      #   expect(user.errors[:password][0]).to include("は8文字以上に設定して下さい。")
-      # end
+      it "is invalid with a password that has less than 6 characters " do
+        user = build(:user, password: "12345")
+        user.valid?
+        expect(user.errors[:password][0]).to include("は6文字以上に設定して下さい。")
+      end
     end
   end
 end
