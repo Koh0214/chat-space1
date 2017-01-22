@@ -1,6 +1,5 @@
 FactoryGirl.define do
   pass = Faker::Internet.password(8)
-  sequence(:name) { |n| "name#{n}" }
 
   factory :user do
     name                  Faker::Name.name
