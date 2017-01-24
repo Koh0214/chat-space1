@@ -1,15 +1,11 @@
 $(function() {
-  function build_post_name(name) {
-    var html = $('<h5 class="post_name">').append(name);
-    return html;
-  }
-  function build_timestamp(data) {
-    var html = $('<p class="timestamp">').append(data.created_at);
-    return html;
-  }
-  function build_post(data) {
-    var html = $('<p class="post">').append(data.body);
-    return html;
+  function build_message(data) {
+    var htmls = []
+    var name = $('<h5 class="post_name">').append(data.name);
+    var timestamp = $('<p class="timestamp">').append(data.created_at);
+    var body = $('<p class="post">').append(data.body);
+    htmls.push(name, timestamp, body);
+    return htmls;
   }
 
   $('.new_message').on('submit', function(e) {
@@ -17,7 +13,6 @@ $(function() {
     var textField = $('.form');
     var input_message = textField.val();
     var group_id = $('.group_id').val();
-    var name = $('.current_user_name').val();
     $.ajax({
       type: 'POST',
       url: '/groups/' + group_id + '/messages.json',
@@ -25,17 +20,12 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      console.log('OK!')
-      var post_name = build_post_name(name);
-      $('div.right__content').append(post_name);
-      var timestamp = build_timestamp(data);
-      $('div.right__content').append(timestamp);
-      var post = build_post(data);
-      $('div.right__content').append(post);
+      data.name = $('.current_user_name').val();
+      $('div.right__content').append(build_message(data));
       textField.val('');
     })
     .fail(function(data) {
-      console.log('保存できとらんゾーーーーー');
+      allert('送信に失敗しました。');
     });
   });
 });
