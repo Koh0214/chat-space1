@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, except: [:index, :new]
+  before_action :set_group, except: [:index, :new, :get_word]
 
   def index
     @groups = current_user.groups
@@ -28,6 +28,10 @@ class GroupsController < ApplicationController
     else
       redirect_to edit_group_path, alert: 'グループの更新に失敗しました'
     end
+  end
+
+  def get_word
+    word = params[:text]
   end
 
   private
