@@ -9,12 +9,17 @@ $(function() {
       data: { text: input_text },
       dataType: 'json'
     })
-    .done(function(data) {
+    .done(function(users) {
       // function(data)の引数に、コントローラーから値が返ってくる
       console.log('いいゾーーーー！！');
-      console.log(data);
+      console.log(users);
+      $.each(users,
+        function(index, user) {
+          console.log(user.name);
+        }
+      )
     })
-    .fail(function(data) {
+    .fail(function(users) {
       console.log('惜しい！！！');
     });
   });
