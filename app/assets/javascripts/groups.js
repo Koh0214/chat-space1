@@ -10,11 +10,11 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      debugger;
+      // function(data)の引数に、コントローラーから値が返ってくる
       console.log('いいゾーーーー！！');
+      console.log(data);
     })
     .fail(function(data) {
-      debugger;
       console.log('惜しい！！！');
     });
   });
