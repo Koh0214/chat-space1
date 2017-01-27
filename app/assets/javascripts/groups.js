@@ -25,15 +25,14 @@ $(function() {
     .done(function(users) {
       // function(users)の引数に、コントローラーから値が返ってくる
       console.log('いいゾーーーー！！');
-      $.each(users,
-        function(index, user) {
-          console.log(user.name);
-        }
-      )
       $(".box").remove();
+      var user_ids = []
       $.each(users,
         function(index, user) {
           appendList(user.name);
+          console.log(user.id);
+          user_ids.push(user.id)
+          debugger;
         }
       )
     })
