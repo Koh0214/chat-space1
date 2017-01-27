@@ -13,6 +13,7 @@
         .chat-group-form__search.clearfix
         = f.text_field :group_users, value: "" , placeholder: "追加したいユーザー名を入力してください", id: 'user-search-field', class: 'chat-group-form__input'
         #user-search-result
+        %ul#list
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
