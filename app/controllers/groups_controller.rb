@@ -32,6 +32,8 @@ class GroupsController < ApplicationController
 
   def get_word
     word = params[:text]
+    users = User.where("name like '%" + word + "%'")
+    render json: users
   end
 
   private
