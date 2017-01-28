@@ -2,10 +2,11 @@ $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
 
-  function appendList(user) {
+  function appendList(user, id) {
+    var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: id })
     var searched_user = $('<div class="searched_user">').append(user);
     var add_button = $('<a href="javascript:void(0)" class="add_button" >').append("追加");
-    var box = $('<li class="box">').append(searched_user, add_button);
+    var box = $('<li class="box">').append(user_id, searched_user, add_button);
     searched_user_list.append(box);
   };
 
@@ -39,7 +40,7 @@ $(function() {
       var user_ids = [];
       $.each(users,
         function(index, user) {
-          appendList(user.name);
+          appendList(user.name, user.id);
           console.log(user.id);
           user_ids.push(user.id)
         }
