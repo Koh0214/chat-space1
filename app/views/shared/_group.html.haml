@@ -1,6 +1,9 @@
 = link_to group_messages_path(group) do
-  %p.group_name_small 
+  %p.group_name_small
     = group.name
   %p.group_message
-    = group.messages.last[:body]
-    
+    -length = group.messages.length
+    -if length === 0
+      = "まだメッセージはありません。"
+    -else
+      = group.messages.last[:body]
