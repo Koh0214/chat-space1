@@ -1,6 +1,7 @@
 $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
+  user_ids = [];
 
   function appendList(user, id) {
     var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: id })
@@ -25,12 +26,32 @@ $(function() {
   });
 
   $('body').on('click', '.add_remove_button', function() {
-    var user_ids = $("#add_user_list #user_id").map(
+    user_ids = $("#add_user_list #user_id").map(
       function(){
         return $(this).val();
       }).get();
-    // 常に#add_user_listの中の #user_idを監視。そこにあるidを配列で取ってくる
     console.log(user_ids);
+  });
+
+  $('.chat-group-form__action-btn').on('click', function(e) {
+    e.preventDefault();
+    var textField = $('.chat-group-form__input');
+    name = textField.val()
+    $.ajax({
+      type: 'POST',
+      url: '/groups.json',
+      data: { group: { name: name, user_ids: user_ids } },
+      dataType: 'json'
+    })
+    .done(function(data) {
+      console.log('成功したぞー');
+      console.log(data);
+      window.location.href = 'http://localhost:3000/'
+    })
+    .fail(function(data) {
+      alert('送信に失敗しました。');
+      console.log(data);
+    });
   });
 
   $('#user-search-field').on('keyup', function(e) {
@@ -45,13 +66,11 @@ $(function() {
     })
     .done(function(users) {
       // function(users)の引数に、コントローラーから値が返ってくる
-      $(".box").remove();
+      $("#searched_user_list .box").remove();
       var user_ids = [];
       $.each(users,
         function(index, user) {
           appendList(user.name, user.id);
-          console.log(user.id);
-          user_ids.push(user.id)
         }
       )
     })
