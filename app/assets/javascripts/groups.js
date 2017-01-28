@@ -20,12 +20,13 @@ $(function() {
 
   $('body').on('click', '.remove_button', function() {
     searched_user_list.append($(this).parent());
-    var add_button = $('<a href="javascript:void(0)" class="add_button" >').append("追加");
+    var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
     $(this).parent().append(add_button);
     $(this).remove();
   });
 
   $('body').on('click', '.add_remove_button', function() {
+    // ボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるidを配列で取ってくる
     user_ids = $("#add_user_list #user_id").map(
       function(){
         return $(this).val();
