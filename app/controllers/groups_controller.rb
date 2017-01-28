@@ -11,9 +11,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(set_params)
-    if group.save
-      redirect_to :root
+    @group = Group.new(set_params)
+    if @group.save
+      respond_to do |format|
+        format.json { render json: @group }
+      end
     else
       redirect_to new_group_path, alert: 'グループの作成に失敗しました'
     end
