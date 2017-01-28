@@ -1,5 +1,7 @@
 .chat-group-form
   %h1 新規チャットグループ
+  %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
+  %input{name: "current_user_id", type: "hidden", value: current_user.id, class: 'current_user_id' }/
   = form_for @group, html: {id: 'new_chat_group', class: 'new_chat_group'} do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
@@ -19,6 +21,9 @@
         = f.label :チャットメンバー, class: 'chat-group-form__label'
       .chat-group-form__field--right
         %ul#add_user_list
+          %li.box
+            %input#user_id{type: "hidden", value: current_user.id}/
+            .searched_user #{current_user.name}
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
