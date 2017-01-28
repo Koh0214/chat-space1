@@ -1,15 +1,26 @@
 $(function() {
-  var list = $("#list");
+  var searched_user_list = $("#searched_user_list");
+  var add_user_list = $("#add_user_list")
 
   function appendList(user) {
     var searched_user = $('<div class="searched_user">').append(user);
     var add_button = $('<a href="javascript:void(0)" class="add_button" >').append("追加");
     var box = $('<li class="box">').append(searched_user, add_button);
-    list.append(box);
+    searched_user_list.append(box);
   };
 
-  $('body').on('click', '#list .add_button', function() {
-    console.log("uhyaaaaaa");
+  $('body').on('click', '#searched_user_list .add_button', function() {
+    add_user_list.append($(this).parent());
+    var remove_button = $('<a href="javascript:void(0)" class="remove_button" >').append("削除");
+    $(this).parent().append(remove_button);
+    $(this).remove();
+  });
+
+  $('body').on('click', '#add_user_list .remove_button', function() {
+    searched_user_list.append($(this).parent());
+    var add_button = $('<a href="javascript:void(0)" class="add_button" >').append("追加");
+    $(this).parent().append(add_button);
+    $(this).remove();
   });
 
   $('#user-search-field').on('keyup', function(e) {
@@ -24,15 +35,13 @@ $(function() {
     })
     .done(function(users) {
       // function(users)の引数に、コントローラーから値が返ってくる
-      console.log('いいゾーーーー！！');
       $(".box").remove();
-      var user_ids = []
+      var user_ids = [];
       $.each(users,
         function(index, user) {
           appendList(user.name);
           console.log(user.id);
           user_ids.push(user.id)
-          debugger;
         }
       )
     })
