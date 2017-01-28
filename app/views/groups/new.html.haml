@@ -18,12 +18,8 @@
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
       .chat-group-form__field--right
-        #chat-group-users
-          #chat-group-user-22.chat-group-user.clearfix
-            = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |t|
-              - t.label { t.check_box + t.text }
+        %ul#add_user_list
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
-        %ul#add_user_list
         = f.button :save, class: 'chat-group-form__action-btn', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
