@@ -13,7 +13,7 @@
         .chat-group-form__search.clearfix
         = f.text_field :group_users, value: "" , placeholder: "追加したいユーザー名を入力してください", id: 'user-search-field', class: 'chat-group-form__input'
         #user-search-result
-        %ul#list
+        %ul#searched_user_list
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
@@ -25,4 +25,5 @@
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
+        %ul#add_user_list
         = f.button :save, class: 'chat-group-form__action-btn', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
