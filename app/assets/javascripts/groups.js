@@ -3,12 +3,15 @@ $(function() {
   var add_user_list = $("#add_user_list")
   user_ids = [];
 
-  function appendList(user, id) {
-    var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: id })
+  function appendList(user, user_id) {
+    var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: user_id })
     var searched_user = $('<div class="searched_user">').append(user);
     var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
-    var box = $('<li class="box">').append(user_id, searched_user, add_button);
-    searched_user_list.append(box);
+
+    if ( user_id.val() !== $(".current_user_id").val() ) {
+      var box = $('<li class="box">').append(user_id, searched_user, add_button);
+      searched_user_list.append(box);
+    }
   };
 
   $('body').on('click', '.add_button', function() {
@@ -25,15 +28,15 @@ $(function() {
     $(this).remove();
   });
 
+  // ボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるidを配列で取ってくる
   $('body').on('click', '.add_remove_button', function() {
-    // ボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるidを配列で取ってくる
     user_ids = $("#add_user_list #user_id").map(
       function(){
         return $(this).val();
       }).get();
-    console.log(user_ids);
   });
 
+  // groups#createにデータを送り、groupを保存する
   $('.chat-group-form__action-btn').on('click', function(e) {
     e.preventDefault();
     var textField = $('.chat-group-form__input');
@@ -45,16 +48,17 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      console.log('成功したぞー');
+      console.log('グループ保存に成功しました');
       console.log(data);
       window.location.href = 'http://localhost:3000/'
     })
     .fail(function(data) {
-      alert('送信に失敗しました。');
+      alert('グループ保存に失敗しました');
       console.log(data);
     });
   });
 
+  // インクリメンタルサーチ部分
   $('#user-search-field').on('keyup', function(e) {
     e.preventDefault();
     var textField = $('#user-search-field');
@@ -66,7 +70,6 @@ $(function() {
       dataType: 'json'
     })
     .done(function(users) {
-      // function(users)の引数に、コントローラーから値が返ってくる
       $("#searched_user_list .box").remove();
       var user_ids = [];
       $.each(users,
