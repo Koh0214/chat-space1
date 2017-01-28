@@ -15,6 +15,12 @@ $(function() {
     var remove_button = $('<a href="javascript:void(0)" class="remove_button" >').append("削除");
     $(this).parent().append(remove_button);
     $(this).remove();
+    var user_ids = $("#add_user_list #user_id").map(
+      function(){
+        return $(this).val();
+      }).get();
+    console.log(user_ids);
+    debugger;
   });
 
   $('body').on('click', '#add_user_list .remove_button', function() {
@@ -22,6 +28,12 @@ $(function() {
     var add_button = $('<a href="javascript:void(0)" class="add_button" >').append("追加");
     $(this).parent().append(add_button);
     $(this).remove();
+    var user_ids = $("#add_user_list #user_id").map(
+      function(){
+        return $(this).val();
+      }).get();
+    console.log(user_ids);
+    debugger;
   });
 
   $('#user-search-field').on('keyup', function(e) {
