@@ -48,13 +48,10 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      console.log('グループ保存に成功しました');
-      console.log(data);
       window.location.href = 'http://localhost:3000/'
     })
     .fail(function(data) {
-      alert('グループ保存に失敗しました');
-      console.log(data);
+      alert('グループ作成に失敗しました！');
     });
   });
 
