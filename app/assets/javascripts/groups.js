@@ -64,14 +64,13 @@ $(function() {
     var textField = $('#user-search-field');
     var input_text = textField.val();
     $.ajax({
-      type: 'POST',
-      url: '/get_word',
+      type: 'GET',
+      url: '/users',
       data: { text: input_text },
       dataType: 'json'
     })
     .done(function(users) {
       $("#searched_user_list .box").remove();
-      var user_ids = [];
       $.each(users,
         function(index, user) {
           appendList(user.name, user.id);
