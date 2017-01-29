@@ -2,8 +2,7 @@
   %p.group_name_small
     = group.name
   %p.group_message
-    -length = group.messages.length
-    -if length === 0
+    -if group.messages.length === 0
       = "まだメッセージはありません。"
     -else
       = group.messages.last[:body]
