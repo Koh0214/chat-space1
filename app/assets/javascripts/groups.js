@@ -1,14 +1,14 @@
 $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
-  user_ids = [];
+  user_ids = [$(".current_user_id").val().toString()];
 
   function appendList(user, user_id) {
-    var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: user_id })
-    var searched_user = $('<div class="searched_user">').append(user);
-    var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
-
-    if ( user_id.val() !== $(".current_user_id").val() ) {
+    if ( user_ids.includes(user_id.toString()) );
+    else {
+      var user_id = $("<input>", {type: 'hidden', id: 'user_id', value: user_id })
+      var searched_user = $('<div class="searched_user">').append(user);
+      var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
       var box = $('<li class="box">').append(user_id, searched_user, add_button);
       searched_user_list.append(box);
     }
