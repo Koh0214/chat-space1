@@ -75,7 +75,6 @@ $(function() {
       )
     })
     .fail(function(users) {
-      console.log('惜しい！！！');
     });
   });
 });
