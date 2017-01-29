@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, except: [:index, :new, :create, :get_word]
+  before_action :set_group, only: [:edit, :update]
 
   def index
     @groups = current_user.groups
@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(set_params)
     if @group.save
+      flash[:notice] =  'グループを作成しました！'
       respond_to do |format|
         format.json { render json: @group }
       end
