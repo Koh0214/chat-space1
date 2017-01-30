@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, except: [:index, :new]
+  before_action :set_group, only: [:edit, :update]
 
   def index
     @groups = current_user.groups
@@ -11,11 +11,11 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(set_params)
-    if group.save
-      redirect_to :root
+    @group = Group.new(set_params)
+    if @group.save
+      redirect_to :root, notice: 'グループを作成しました！'
     else
-      redirect_to new_group_path, alert: 'グループの作成に失敗しました'
+      render new_group_path, alert: 'グループの作成に失敗しました'
     end
   end
 
@@ -29,6 +29,7 @@ class GroupsController < ApplicationController
       redirect_to edit_group_path, alert: 'グループの更新に失敗しました'
     end
   end
+
 
   private
   def set_params

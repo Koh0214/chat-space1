@@ -1,5 +1,7 @@
 .chat-group-form
   %h1 新規チャットグループ
+  %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
+  %input{name: "current_user_id", type: "hidden", value: current_user.id, class: 'current_user_id' }/
   = form_for @group, html: {id: 'new_chat_group', class: 'new_chat_group'} do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
@@ -11,17 +13,17 @@
         = f.label :チャットメンバーを追加, class: 'chat-group-form__label'
       .chat-group-form__field--right
         .chat-group-form__search.clearfix
-          / = f.text_field :name, placeholder: "追加したいユーザー名を入力してください", id: 'user-search-field', class: 'chat-group-form__input'
+        = f.text_field :group_users, value: "" , placeholder: "追加したいユーザー名を入力してください", id: 'user-search-field', class: 'chat-group-form__input'
         #user-search-result
+        %ul#searched_user_list
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
       .chat-group-form__field--right
-        #chat-group-users
-          #chat-group-user-22.chat-group-user.clearfix
-            / / %input{ name: "chat_group[user_ids][]", type: "hidden", value: "22" }/
-            = collection_check_boxes(:group, :user_ids, User.all, :id, :name) do |t|
-              - t.label { t.check_box + t.text }
+        %ul#add_user_list
+          %li.box
+            %input#user_id{type: "hidden", name: 'group[user_ids][]', value: current_user.id}/
+            .searched_user #{current_user.name}
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
