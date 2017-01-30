@@ -12,7 +12,6 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(set_params)
-    binding.pry
     if @group.save
       redirect_to :root, notice: 'グループを作成しました！'
     else
