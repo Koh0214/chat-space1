@@ -56,6 +56,9 @@ $(function() {
           appendList(user.name, user.id);
         }
       )
+      if (input_text.length === 0) {
+        $("#searched_user_list .box").remove();
+      };
     })
     .fail(function(users) {
     });
