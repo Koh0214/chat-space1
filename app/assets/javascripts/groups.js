@@ -36,7 +36,7 @@ $(function() {
       }).get();
   });
 
-  // groups#createにデータを送り、groupを保存する
+  // users#indexにデータを送り、groupを保存する
   $('.chat-group-form__action-btn').on('click', function(e) {
     e.preventDefault();
     var textField = $('.chat-group-form__input');
