@@ -14,10 +14,7 @@ class GroupsController < ApplicationController
     @group = Group.new(set_params)
     binding.pry
     if @group.save
-      flash[:notice] =  'グループを作成しました！'
-      respond_to do |format|
-        format.json { render json: @group }
-      end
+      redirect_to :root, notice: 'グループを作成しました！'
     else
       render new_group_path, alert: 'グループの作成に失敗しました'
     end
