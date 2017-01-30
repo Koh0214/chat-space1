@@ -1,5 +1,7 @@
 .chat-group-form
   %h1 チャットグループ編集
+  %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
+  %input{name: "current_user_id", type: "hidden", value: current_user.id, class: 'current_user_id' }/
   = form_for @group do |f|
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
@@ -13,11 +15,18 @@
         .chat-group-form__search.clearfix
           = f.text_field :group_users, value: "", id: 'user-search-field', class: 'chat-group-form__input', placeholder: "追加したいユーザー名を入力してください"
         #user-search-result
+        %ul#searched_user_list
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
         = f.label :チャットメンバー, class: 'chat-group-form__label'
-        = collection_check_boxes( :group, :user_ids, User.all, :id, :name) do |t|
-          - t.label { t.check_box + t.text }
+        -# = collection_check_boxes( :group, :user_ids, User.all, :id, :name) do |t|
+        -#   - t.label { t.check_box + t.text }
+      .chat-group-form__field--right
+        %ul#add_user_list
+          %li.box
+            （ログイン中のユーザー）
+            .searched_user #{current_user.name}
+            %input#user_id{type: "hidden", name: 'group[user_ids][]', value: current_user.id}/
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
       .chat-group-form__field--right
