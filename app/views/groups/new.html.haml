@@ -22,7 +22,7 @@
       .chat-group-form__field--right
         %ul#add_user_list
           %li.box
-            %input#user_id{type: "hidden", value: current_user.id}/
+            %input#user_id{type: "hidden", name: 'group[user_ids][]', value: current_user.id}/
             .searched_user #{current_user.name}
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
