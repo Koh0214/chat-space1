@@ -72,7 +72,7 @@ $(function() {
     });
   });
 
-  // ↓↓ group fix用のコード ↓↓
+  // ↓↓ group edit用のコード ↓↓
 
   var group_users = gon.users
 
