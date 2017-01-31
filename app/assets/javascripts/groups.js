@@ -2,8 +2,6 @@ $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
   user_ids = [$(".current_user_id").val().toString()];
-  add_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
-  remove_button = '<a href="javascript:void(0)" class="remove_button add_remove_button" >削除</a>'
 
   function appendSearchedUserList(users) {
     $.each(users,
@@ -21,20 +19,32 @@ $(function() {
     );
   };
 
-  function appendAddUserList(user_name, user_id) {
-    var searched_user = '<div class="searched_user">' + user_name + '</div>'
-    var user_id = '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + user_id + '">'
-    add_user_list.append( $('<li class="box">').append(searched_user, user_id, remove_button) )
+  function appendAddUserList(users) {
+    $.each(users,
+      function(index, user) {
+        if ( !(user_ids.includes( user.id.toString() )) ) {
+        var user_data = $(
+          '<li class="box">' +
+            '<div class="searched_user">' + user.name + '</div>' +
+            '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + user.id + '">' +
+            '<a href="javascript:void(0)" class="remove_button add_remove_button">削除</a>' +
+          '</li>' );
+        add_user_list.append(user_data);
+        };
+      }
+    );
   };
 
   $('body').on('click', '.add_remove_button' , function() {
     if ( $(this).hasClass('add_button')) {
       add_user_list.append($(this).parent());
       $(this).prev().attr('name', 'group[user_ids][]');
+      var remove_button = '<a href="javascript:void(0)" class="remove_button add_remove_button" >削除</a>'
       $(this).parent().append(remove_button);
     }else {
       searched_user_list.append($(this).parent());
       $(this).prev().attr('name', '')
+      var add_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
       $(this).parent().append(add_button);
     }
     $(this).remove();
@@ -59,7 +69,9 @@ $(function() {
     })
     .done(function(users) {
       $("#searched_user_list .box").remove();
+
       appendSearchedUserList(users);
+      
       if (input_text.length === 0) {
         $("#searched_user_list .box").remove();
       };
@@ -69,14 +81,8 @@ $(function() {
     });
   });
 
-  // ↓↓ group edit用のコード ↓↓
-
+  // group edit の実装
   var group_users = gon.users
+  appendAddUserList(group_users)
 
-  $.each(group_users, function(i, user) {
-    if ( !( user_ids.includes( user.id.toString() )) ) {
-      user_ids.push(user.id.toString());
-      appendAddUserList(user.name, user.id)
-    };
-  });
 });
