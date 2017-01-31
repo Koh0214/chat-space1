@@ -7,7 +7,7 @@ $(function() {
     $.each(users,
       function (index, user) {
         if ( !( user_ids.includes(user.id.toString()) ) ) {
-          appendSeacrh(user.name, user.id)
+          appendSeacrhList(user.name, user.id)
         };
       }
     );
@@ -51,6 +51,7 @@ $(function() {
     }else {
       appendSeacrhList(user_name, user_id)
     }
+    $(this).parent().remove()
   });
 
   // 削除、追加のボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるvalueを配列で取ってくる
