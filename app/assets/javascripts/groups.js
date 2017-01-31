@@ -5,17 +5,20 @@ $(function() {
   add_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
   remove_button = '<a href="javascript:void(0)" class="remove_button add_remove_button" >削除</a>'
 
-  function appendSearchedUserList(user_name, user_id) {
-
-    if ( !(user_ids.includes( user_id.toString() )) ) {
-      var user_data = $(
-        '<li class="box">' +
-          '<div class="searched_user">' + user_name + '</div>' +
-          '<input type="hidden" id="user_id" name="" value="' + user_id + '">' +
-          '<a href="javascript:void(0)" class="add_button add_remove_button">追加</a>' +
-        '</li>' );
-      searched_user_list.append(user_data)
-    };
+  function appendSearchedUserList(users) {
+    $.each(users,
+      function(index, user) {
+        if ( !(user_ids.includes( user.id.toString() )) ) {
+        var user_data = $(
+          '<li class="box">' +
+            '<div class="searched_user">' + user.name + '</div>' +
+            '<input type="hidden" id="user_id" name="" value="' + user.id + '">' +
+            '<a href="javascript:void(0)" class="add_button add_remove_button">追加</a>' +
+          '</li>' );
+        searched_user_list.append(user_data);
+        };
+      }
+    );
   };
 
   function appendAddUserList(user_name, user_id) {
@@ -56,12 +59,7 @@ $(function() {
     })
     .done(function(users) {
       $("#searched_user_list .box").remove();
-      appendSearchedUserList(users)
-      $.each(users,
-        function(index, user) {
-          appendSearchedUserList(user.name, user.id);
-        }
-      )
+      appendSearchedUserList(users);
       if (input_text.length === 0) {
         $("#searched_user_list .box").remove();
       };
