@@ -5,11 +5,10 @@ $(function() {
 
   function appendList(user_name, user_id) {
     if ( !(user_ids.includes( user_id.toString() )) ) {
-      var searched_user = $('<div class="searched_user">').append(user_name);
-      var user_id = $("<input>", {type: 'hidden', id: 'user_id', name: '', value: user_id })
-      var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
-      var box = $('<li class="box">').append(searched_user, user_id, add_button);
-      searched_user_list.append(box);
+      var name = '<div class="searched_user">' + user_name + '</div>'
+      var id = '<input type="hidden" id="user_id" value="' + user_id + '">'
+      var remove_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
+      searched_user_list.append( $('<li class="box">').append(name, id, remove_button) )
     };
   };
 
