@@ -8,14 +8,14 @@ $(function() {
   function appendSearchedUserList(user_name, user_id) {
     if ( !(user_ids.includes( user_id.toString() )) ) {
       var user_name = '<div class="searched_user">' + user_name + '</div>'
-      var user_id = '<input type="hidden" id="user_id" value="' + user_id + '">'
+      var user_id = '<input type="hidden" id="user_id" name="" value="' + user_id + '">'
       searched_user_list.append( $('<li class="box">').append(user_name, user_id, add_button) )
     };
   };
 
   function appendAddUserList(user_name, user_id) {
     var searched_user = '<div class="searched_user">' + user_name + '</div>'
-    var user_id = '<input type="hidden" id="user_id" name: "group[user_ids][]" value="' + user_id + '">'
+    var user_id = '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + user_id + '">'
     add_user_list.append( $('<li class="box">').append(searched_user, user_id, remove_button) )
   };
 
