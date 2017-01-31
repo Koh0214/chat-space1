@@ -2,46 +2,40 @@ $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
   user_ids = [$(".current_user_id").val().toString()];
+  add_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
+  remove_button = '<a href="javascript:void(0)" class="remove_button add_remove_button" >削除</a>'
 
-  function appendList(user_name, user_id) {
+  function appendSearchedUserList(user_name, user_id) {
     if ( !(user_ids.includes( user_id.toString() )) ) {
       var user_name = '<div class="searched_user">' + user_name + '</div>'
       var user_id = '<input type="hidden" id="user_id" value="' + user_id + '">'
-      var remove_button = '<a href="javascript:void(0)" class="add_button add_remove_button" >追加</a>'
-      searched_user_list.append( $('<li class="box">').append(user_name, user_id, remove_button) )
+      searched_user_list.append( $('<li class="box">').append(user_name, user_id, add_button) )
     };
   };
 
   function appendAddUserList(user_name, user_id) {
-      var searched_user = $('<div class="searched_user">').append(user_name);
-      var user_id = $("<input>", {type: 'hidden', id: 'user_id', name: 'group[user_ids][]', value: user_id })
-      var remove_button = $('<a href="javascript:void(0)" class="remove_button add_remove_button" >').append("削除");
-      var box = $('<li class="box">').append(searched_user, user_id, remove_button);
-      add_user_list.append(box);
+    var searched_user = '<div class="searched_user">' + user_name + '</div>'
+    var user_id = '<input type="hidden" id="user_id" name: "group[user_ids][]" value="' + user_id + '">'
+    add_user_list.append( $('<li class="box">').append(searched_user, user_id, remove_button) )
   };
 
-  $('body').on('click', '.add_button', function() {
-    add_user_list.append($(this).parent());
-    $(this).prev().attr('name', 'group[user_ids][]');
-    var remove_button = $('<a href="javascript:void(0)" class="remove_button add_remove_button" >').append("削除");
-    $(this).parent().append(remove_button);
-    $(this).remove();
-  });
-
-  $('body').on('click', '.remove_button', function() {
-    searched_user_list.append($(this).parent());
-    $(this).prev().attr('name', '')
-    var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
-    $(this).parent().append(add_button);
+  $('body').on('click', '.add_remove_button' , function() {
+    if ( $(this).hasClass('add_button')) {
+      add_user_list.append($(this).parent());
+      $(this).prev().attr('name', 'group[user_ids][]');
+      $(this).parent().append(remove_button);
+    }else {
+      searched_user_list.append($(this).parent());
+      $(this).prev().attr('name', '')
+      $(this).parent().append(add_button);
+    }
     $(this).remove();
   });
 
   // 削除、追加のボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるvalueを配列で取ってくる
   $('body').on('click', '.add_remove_button', function() {
     user_ids = $("#add_user_list #user_id").map(
-      function(){
-        return $(this).val();
-      }).get();
+      function(){ return $(this).val(); }).get();
   });
 
   // インクリメンタルサーチ部分
@@ -59,7 +53,7 @@ $(function() {
       $("#searched_user_list .box").remove();
       $.each(users,
         function(index, user) {
-          appendList(user.name, user.id);
+          appendSearchedUserList(user.name, user.id);
         }
       )
       if (input_text.length === 0) {
