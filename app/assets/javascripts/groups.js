@@ -1,50 +1,55 @@
 $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
-  user_ids = [$(".current_user_id").val().toString()];
+  user_ids = [];
 
-  function appendSearchedUserList(users) {
+  function appendSearchLoop(users) {
     $.each(users,
-      function(index, user) {
-        if ( !(user_ids.includes( user.id.toString() )) ) {
-        var user_data = $(
-          '<li class="box">' +
-            '<div class="searched_user">' + user.name + '</div>' +
-            '<input type="hidden" id="user_id" name="" value="' + user.id + '">' +
-            '<a href="javascript:void(0)" class="add_button add_remove_button">追加</a>' +
-          '</li>' );
-        searched_user_list.append(user_data);
+      function (index, user) {
+        if ( !( user_ids.includes(user.id.toString()) ) ) {
+          appendSeacrh(user.name, user.id)
         };
       }
     );
   };
 
-  function appendAddUserList(users) {
+  function appendAddLoop(users) {
     $.each(users,
-      function(index, user) {
-        if ( !(user_ids.includes( user.id.toString() )) ) {
-        var user_data = $(
-          '<li class="box">' +
-            '<div class="searched_user">' + user.name + '</div>' +
-            '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + user.id + '">' +
-            '<a href="javascript:void(0)" class="remove_button add_remove_button">削除</a>' +
-          '</li>' );
-        add_user_list.append(user_data);
+      function (index, user) {
+        if ( !( user_ids.includes(user.id.toString()) ) ) {
+          appendAddList(user.name, user.id)
         };
       }
     );
   };
 
-  // box要素の上下移動 ＆ 追加、削除ボタンの相互書き換え
+  function appendSeacrhList(name, id){
+    var user_data = $(
+      '<li class="box">' +
+        '<div class="searched_user">' + name + '</div>' +
+        '<input type="hidden" id="user_id" name="" value="' + id + '">' +
+        '<a href="javascript:void(0)" class="add_button add_remove_button">追加</a>' +
+      '</li>' );
+    searched_user_list.append(user_data);
+  };
+
+  function appendAddList(name, id){
+    var user_data = $(
+      '<li class="box">' +
+        '<div class="searched_user">' + name + '</div>' +
+        '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + id + '">' +
+        '<a href="javascript:void(0)" class="remove_button add_remove_button">追加</a>' +
+      '</li>' );
+    add_user_list.append(user_data);
+  };
+
   $('body').on('click', '.add_remove_button' , function() {
+    user_name = $(this).siblings('.searched_user').text()
+    user_id = $(this).siblings('#user_id').val()
     if ( $(this).hasClass('add_button')) {
-      add_user_list.append($(this).parent());
-      $(this).attr('class', 'remove_button add_remove_button').val('削除')
-      $(this).prev().attr('name', 'group[user_ids][]');
+      appendAddList(user_name, user_id)
     }else {
-      searched_user_list.append($(this).parent());
-      $(this).attr('class', 'add_button add_remove_button').val('追加')
-      $(this).prev().attr('name', '')
+      appendSeacrhList(user_name, user_id)
     }
   });
 
@@ -57,8 +62,7 @@ $(function() {
   // インクリメンタルサーチ部分
   $('#user-search-field').on('keyup', function(e) {
     e.preventDefault();
-    var textField = $('#user-search-field');
-    var input_text = textField.val();
+    var input_text = $('#user-search-field').val();
     $.ajax({
       type: 'GET',
       url: '/users',
@@ -67,9 +71,8 @@ $(function() {
     })
     .done(function(users) {
       $("#searched_user_list .box").remove();
-      appendSearchedUserList(users);
-      if (input_text.length === 0) {
-        $("#searched_user_list .box").remove();
+      if ( input_text.length !== 0 ) {
+        appendSearchLoop(users);
       };
     })
     .fail(function(users) {
@@ -79,6 +82,6 @@ $(function() {
 
   // group edit の実装
   var group_users = gon.users
-  appendAddUserList(group_users)
+  appendAddLoop(group_users)
 
 });
