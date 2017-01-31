@@ -4,14 +4,13 @@ $(function() {
   user_ids = [$(".current_user_id").val().toString()];
 
   function appendList(user_name, user_id) {
-    if ( user_ids.includes(user_id.toString()) );
-    else {
+    if ( !(user_ids.includes( user_id.toString() )) ) {
       var searched_user = $('<div class="searched_user">').append(user_name);
       var user_id = $("<input>", {type: 'hidden', id: 'user_id', name: '', value: user_id })
       var add_button = $('<a href="javascript:void(0)" class="add_button add_remove_button" >').append("追加");
       var box = $('<li class="box">').append(searched_user, user_id, add_button);
       searched_user_list.append(box);
-    }
+    };
   };
 
   function appendAddUserList(user_name, user_id) {
@@ -77,10 +76,9 @@ $(function() {
   var group_users = gon.users
 
   $.each(group_users, function(i, user) {
-    if ( user_ids.includes(user.id.toString()) );
-    else {
+    if ( !( user_ids.includes( user.id.toString() )) ) {
       user_ids.push(user.id.toString());
       appendAddUserList(user.name, user.id)
-    }
+    };
   });
 });
