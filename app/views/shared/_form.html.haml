@@ -1,0 +1,28 @@
+%input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
+%input{name: "current_user_id", type: "hidden", value: current_user.id, class: 'current_user_id' }/
+.chat-group-form__field.clearfix
+  .chat-group-form__field--left
+    = f.label :name, class: 'chat-group-form__label'
+  .chat-group-form__field--right
+    = f.text_field :name, id: 'chat_group_name', class: 'chat-group-form__input', placeholder: "グループ名を入力してください"
+.chat-group-form__field.clearfix
+  .chat-group-form__field--left
+    = f.label :チャットメンバーを追加, class: 'chat-group-form__label'
+  .chat-group-form__field--right
+    .chat-group-form__search.clearfix
+    = f.text_field :group_users, value: "", id: 'user-search-field', class: 'chat-group-form__input', placeholder: "追加したいユーザー名を入力してください"
+    #user-search-result
+    %ul#searched_user_list
+.chat-group-form__field.clearfix
+  .chat-group-form__field--left
+    = f.label :チャットメンバー, class: 'chat-group-form__label'
+  .chat-group-form__field--right
+    %ul#add_user_list
+      %li.box
+        （ログイン中のユーザー）
+        .searched_user #{current_user.name}
+        %input#user_id{type: "hidden", name: 'group[user_ids][]', value: current_user.id}/
+.chat-group-form__field.clearfix
+  .chat-group-form__field--left
+  .chat-group-form__field--right
+    = f.button :save, class: 'chat-group-form__action-btn', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
