@@ -61,6 +61,7 @@ $(function() {
       };
     })
     .fail(function(users) {
+      alert('検索が失敗しました。画面をリロードしてやり直してください。')
     });
   });
 
