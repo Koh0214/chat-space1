@@ -1,12 +1,12 @@
 $(function() {
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
-  user_ids = [];
+  user_ids = [Number($('.current_user_id').val())];
 
   function appendSearchLoop(users) {
     $.each(users,
       function (index, user) {
-        if ( !( user_ids.includes(user.id.toString()) ) ) {
+        if ( !( user_ids.includes(user.id) ) ) {
           appendSeacrhList(user.name, user.id)
         };
       }
@@ -16,7 +16,7 @@ $(function() {
   function appendAddLoop(users) {
     $.each(users,
       function (index, user) {
-        if ( !( user_ids.includes(user.id.toString()) ) ) {
+        if ( !( user_ids.includes(user.id) ) ) {
           appendAddList(user.name, user.id)
         };
       }
@@ -27,46 +27,40 @@ $(function() {
     var user_data = $(
       '<li class="box">' +
         '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" id="user_id" name="" value="' + id + '">' +
-        '<a href="javascript:void(0)" class="add_button add_remove_button">追加</a>' +
+        '<input type="hidden" class="user_id" name="" value="' + id + '">' +
+        '<a href="javascript:void(0)" class="add_button">追加</a>' +
       '</li>' );
     searched_user_list.append(user_data);
+    // user_idsからidを削除
+    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
   };
 
   function appendAddList(name, id){
     var user_data = $(
       '<li class="box">' +
         '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" id="user_id" name="group[user_ids][]" value="' + id + '">' +
-        '<a href="javascript:void(0)" class="remove_button add_remove_button">追加</a>' +
+        '<input type="hidden" class="user_id" name="group[user_ids][]" value="' + id + '">' +
+        '<a href="javascript:void(0)" class="remove_button">削除</a>' +
       '</li>' );
     add_user_list.append(user_data);
+    user_ids.push(id)
   };
 
-  $('body').on('click', '.add_remove_button' , function() {
-    user_name = $(this).siblings('.searched_user').text()
-    user_id = $(this).siblings('#user_id').val()
-    if ( $(this).hasClass('add_button')) {
-      appendAddList(user_name, user_id)
-    }else {
-      appendSeacrhList(user_name, user_id)
-    }
+  $('body').on('click', '.add_button' , function() {
+    name = $(this).siblings('.searched_user').text()
+    id = Number($(this).siblings('.user_id').val())
+    appendAddList(name, id)
     $(this).parent().remove()
   });
 
-  // edit画面表示時に#add_user_listの中の#user_idのvalueを配列で取得、user_idsに格納。
-  $('body').ready(function() {
-    user_ids = $("#add_user_list #user_id").map(
-      function(){ return $(this).val(); }).get();
+  $('body').on('click', '.remove_button' , function() {
+    id = Number($(this).siblings('.user_id').val())
+    // user_idsからidを削除
+    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
+    $(this).parent().remove()
   });
 
-  // 削除、追加ボタンクリック時に#add_user_listの中の #user_idのvalueを配列で取得、user_idsに格納。
-  $('body').on('click', '.add_remove_button', function() {
-    user_ids = $("#add_user_list #user_id").map(
-      function(){ return $(this).val(); }).get();
-  });
-
-  // インクリメンタルサーチ部分
+  // インクリメンタルサーチ
   $('#user-search-field').on('keyup', function(e) {
     e.preventDefault();
     var input_text = $('#user-search-field').val();
