@@ -4,8 +4,7 @@ $(function() {
   var add_user_list = $("#add_user_list")
 
   // group edit の実装
-  var group_users = gon.users
-  appendAddLoop(group_users)
+  appendAddLoop(gon.users)
 
   function appendSearchLoop(users) {
     $.each(users,
