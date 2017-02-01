@@ -1,7 +1,11 @@
 $(function() {
+  user_ids = [Number($('.current_user_id').val())];
   var searched_user_list = $("#searched_user_list");
   var add_user_list = $("#add_user_list")
-  user_ids = [Number($('.current_user_id').val())];
+
+  // group edit の実装
+  var group_users = gon.users
+  appendAddLoop(group_users)
 
   function appendSearchLoop(users) {
     $.each(users,
@@ -47,14 +51,14 @@ $(function() {
   };
 
   $('body').on('click', '.add_button' , function() {
-    name = $(this).siblings('.searched_user').text()
-    id = Number($(this).siblings('.user_id').val())
+    var name = $(this).siblings('.searched_user').text()
+    var id = Number($(this).siblings('.user_id').val())
     appendAddList(name, id)
     $(this).parent().remove()
   });
 
   $('body').on('click', '.remove_button' , function() {
-    id = Number($(this).siblings('.user_id').val())
+    var id = Number($(this).siblings('.user_id').val())
     // user_idsからidを削除
     user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
     $(this).parent().remove()
@@ -80,9 +84,5 @@ $(function() {
       alert('検索が失敗しました。画面をリロードしてやり直してください。')
     });
   });
-
-  // group edit の実装
-  var group_users = gon.users
-  appendAddLoop(group_users)
 
 });
