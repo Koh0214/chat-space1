@@ -54,7 +54,13 @@ $(function() {
     $(this).parent().remove()
   });
 
-  // 削除、追加のボタンクリックの度に#add_user_listの中の #user_idを監視。そこにあるvalueを配列で取ってくる
+  // edit画面表示時に#add_user_listの中の#user_idのvalueを配列で取得、user_idsに格納。
+  $('body').ready(function() {
+    user_ids = $("#add_user_list #user_id").map(
+      function(){ return $(this).val(); }).get();
+  });
+
+  // 削除、追加ボタンクリック時に#add_user_listの中の #user_idのvalueを配列で取得、user_idsに格納。
   $('body').on('click', '.add_remove_button', function() {
     user_ids = $("#add_user_list #user_id").map(
       function(){ return $(this).val(); }).get();
