@@ -4,3 +4,7 @@
   = message.created_at
 %p.post
   = message.body
+  - if message.image?
+    = image_tag message.image.url
+  - else
+    = image_tag 'noimage.gif'
