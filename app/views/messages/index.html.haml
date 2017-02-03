@@ -24,10 +24,10 @@
     .right__footer
       = form_for([@group, @message]) do |f|
         = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'form right__footer__box'
+        %i.fa.fa-picture-o{ aria: { hidden: true } }
         = image_tag @message.image.url if @message.image?
         = f.file_field :image
         = f.hidden_field :image_cache
-        %i.fa.fa-picture-o{ aria: { hidden: true } }
         = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
         %input{name: "group_id", type: "hidden", value: @group.id, class: 'group_id' }/
         %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
