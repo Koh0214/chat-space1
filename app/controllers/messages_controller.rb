@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = current_user.messages.new(set_params)
+    @message = Message.new(set_params)
     if @message.save
       respond_to do |format|
         format.html { redirect_to group_messages_path }
@@ -23,6 +23,7 @@ class MessagesController < ApplicationController
   private
 
   def set_params
-    params.require(:message).permit(:body).merge(group_id: params[:group_id])
+    a = params.require(:message).permit(:body, :image, :image_cache).merge(group_id: params[:group_id], user_id: current_user.id)
+    return a
   end
 end
