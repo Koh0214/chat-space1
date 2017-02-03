@@ -4,8 +4,7 @@ $(function() {
   var add_user_list = $("#add_user_list")
 
   // group edit の実装
-  var group_users = gon.users
-  appendAddLoop(group_users)
+  appendAddLoop(gon.users)
 
   function appendSearchLoop(users) {
     $.each(users,
@@ -28,25 +27,31 @@ $(function() {
   };
 
   function appendSeacrhList(name, id){
-    var user_data = $(
+    $(
       '<li class="box">' +
-        '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" class="user_id" name="" value="' + id + '">' +
+        '<div class="searched_user"></div>' +
+        '<input type="hidden" class="user_id" name="" value="">' +
         '<a href="javascript:void(0)" class="add_button">追加</a>' +
-      '</li>' );
-    searched_user_list.append(user_data);
+      '</li>'
+    )
+    .find('.searched_user').text(name).end()
+    .find('.user_id').val(id).end()
+    .appendTo(searched_user_list)
     // user_idsからidを削除
-    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
+    user_ids = user_ids.filter(function(v) { return v != id; });
   };
 
   function appendAddList(name, id){
-    var user_data = $(
+    $(
       '<li class="box">' +
-        '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" class="user_id" name="group[user_ids][]" value="' + id + '">' +
+        '<div class="searched_user"></div>' +
+        '<input type="hidden" class="user_id" name="group[user_ids][]" value="">' +
         '<a href="javascript:void(0)" class="remove_button">削除</a>' +
-      '</li>' );
-    add_user_list.append(user_data);
+      '</li>'
+    )
+    .find('.searched_user').text(name).end()
+    .find('.user_id').val(id).end()
+    .appendTo(add_user_list)
     user_ids.push(id)
   };
 
@@ -60,7 +65,7 @@ $(function() {
   $('body').on('click', '.remove_button' , function() {
     var id = Number($(this).siblings('.user_id').val())
     // user_idsからidを削除
-    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
+    user_ids = user_ids.filter(function(v) { return v != id; });
     $(this).parent().remove()
   });
 
