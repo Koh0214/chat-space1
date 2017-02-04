@@ -22,7 +22,7 @@
       = render partial: "shared/message", collection: @messages
 
     .right__footer
-      = form_for([@group, @message]) do |f|
+      = form_for([@group, @message], { id: 'message_form' } ) do |f|
         = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'form right__footer__box'
         %i.fa.fa-picture-o{ aria: { hidden: true } }
         = image_tag @message.image.url if @message.image?
