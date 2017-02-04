@@ -12,8 +12,5 @@
 !/log/.keep
 /tmp
 
-*.png
-
-*.jpg
-
-*.jpeg
+/public/uploads/message/image
+/public/uploads/tmp
