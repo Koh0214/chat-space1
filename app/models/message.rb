@@ -7,9 +7,7 @@ class Message < ApplicationRecord
   validate :present_body_or_image
 
   def present_body_or_image
-    if !body? && !image?
-      errors.add(:body, "can't be blank body and image")
-    end
+    errors.add(:body, "can't be blank body and image") if !body? && !image?
   end
 
 end
