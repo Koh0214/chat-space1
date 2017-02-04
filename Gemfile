@@ -59,3 +59,5 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'gon'
 gem 'carrierwave'
+gem 'rmagick'
+gem "mini_magick"
