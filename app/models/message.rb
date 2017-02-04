@@ -4,7 +4,6 @@ class Message < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-
   validate :present_body_or_image
 
   def present_body_or_image
