@@ -4,3 +4,4 @@
   = message.created_at
 %p.post
   = message.body
+  = image_tag message.image.url if message.image?
