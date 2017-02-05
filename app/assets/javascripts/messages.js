@@ -1,7 +1,7 @@
 $(function() {
 
   function build_message(data) {
-    var htmls = $(
+    $(
       '<li style="list-style:none;" >' +
         '<h5 class="post_name"></h5>' +
         '<p class="timestamp"></p>' +
