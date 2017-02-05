@@ -7,6 +7,10 @@ $(function() {
   var group_users = gon.users
   appendAddLoop(group_users)
 
+  function removeIdFromUserIds(id) {
+    user_ids = user_ids.filter(function(v) { return v != id; });
+  }
+
   function appendSearchLoop(users) {
     $.each(users,
       function (index, user) {
@@ -38,8 +42,7 @@ $(function() {
     .find('.searched_user').text(name).end()
     .find('.user_id').val(id).end()
     .appendTo(searched_user_list)
-    // user_idsからidを削除
-    user_ids = user_ids.filter(function(v) { return v != id; });
+    removeIdFromUserIds(id);
   };
 
   function appendAddList(name, id){
@@ -56,7 +59,6 @@ $(function() {
   };
 
 
-
   $('body').on('click', '.add_button' , function() {
     var name = $(this).siblings('.searched_user').text()
     var id = Number($(this).siblings('.user_id').val())
@@ -66,7 +68,7 @@ $(function() {
 
   $('body').on('click', '.remove_button' , function() {
     var id = Number($(this).siblings('.user_id').val())
-    user_ids = user_ids.filter(function(v) { return v != id; });
+    removeIdFromUserIds(id);
     $(this).parent().remove()
   });
 
