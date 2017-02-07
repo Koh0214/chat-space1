@@ -61,3 +61,5 @@ gem 'gon'
 gem 'carrierwave'
 gem 'rmagick'
 gem "mini_magick"
+gem 'fog'
+gem 'dotenv-rails'
