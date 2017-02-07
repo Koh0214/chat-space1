@@ -6,25 +6,13 @@
 
 .left{
   color: white;
+  // header
   .user_name{
     font-size: $font_big;
     font-weight: bold;
     letter-spacing: 1px;
     line-height: 110px;
   }
-
-  .group_name_small{
-    color: white;
-    font-size: 15px;
-    padding: 20px 0 5px;
-  }
-
-  .group_message{
-    color: white;
-    font-size: 11px;
-    padding-bottom: 40px;
-  }
-
   .icons {
     font-size: 23px;
     margin-top: 40px;
@@ -33,23 +21,34 @@
   .fa{
     color: white;
   }
+
+  // body
+  .group_name_small{
+    color: white;
+    font-size: 15px;
+    padding: 20px 0 5px;
+  }
+  .group_message{
+    color: white;
+    font-size: 11px;
+    padding-bottom: 40px;
+  }
 }
 
 
 .right{
+  //header
   .group_name{
     color: $darkgrey;
     font-size: $font_big;
     letter-spacing: 2px;
     padding: 35px 0 15px;
   }
-
   .group_member {
     color: $rightgrey;
     font-size: $font_small;
     line-height: 9px;
   }
-
   .edit_button {
     color: $skyblue;
     margin-top: 28px;
@@ -60,6 +59,7 @@
     float: right;
   }
 
+  // posts
   .post_name {
     color: $darkgrey;
     font-size: 16px;
@@ -67,7 +67,6 @@
     padding: 46px 0 10px;
     float: left;
   }
-
   .timestamp {
     color: $rightgrey;
     font-size: $font_small;
@@ -75,20 +74,19 @@
     margin-left: 10px;
     float: left;
   }
-
   .post {
     color: $darkgrey;
     font-size: 14px;
     clear: both;
   }
 
+  // footer
   .box_message {
     color: $rightgrey;
     font-size: 16px;
     line-height: 50px;
     padding-left: 10px;
   }
-
   .send_button {
     color: white;
     background-color: $skyblue;
@@ -99,7 +97,6 @@
     border-style: none;
     float: right;
   }
-
   .fa-picture-o {
     color: $darkgrey;
     float: right;
@@ -107,7 +104,6 @@
     top: 40px;
     right: 200px;
   }
-
   input#message_image {
     width: 40px;
     height: 30px;
