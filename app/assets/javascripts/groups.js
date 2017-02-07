@@ -5,7 +5,7 @@ $(function() {
 
   // group edit の実装
   var group_users = gon.users
-  appendAddLoop(group_users)
+  appendGroupMemberLoop(group_users)
 
   function removeIdFromUserIds(id) {
     user_ids = user_ids.filter(function(v) { return v != id; });
@@ -21,48 +21,47 @@ $(function() {
     );
   };
 
-  function appendAddLoop(users) {
+  function appendGroupMemberLoop(users) {
     $.each(users,
       function (index, user) {
         if ( !( user_ids.includes(user.id) ) ) {
-          appendAddList(user.name, user.id)
+          appendGroupMemberList(user.name, user.id)
         };
       }
     );
   };
 
   function appendSeacrhList(name, id){
-    $(
+    listFormat(name, id)
+    .find('.add_remove_button').text('追加').attr('class', 'add_remove_button add_button').end()
+    .appendTo(searched_user_list)
+  };
+
+  function appendGroupMemberList(name, id){
+    user_ids.push(id)
+    listFormat(name, id)
+    .find('.user_id').attr('name', 'group[user_ids][]').end()
+    .find('.add_remove_button').text('削除').attr('class', 'add_remove_button remove_button').end()
+    .appendTo(add_user_list)
+  };
+
+  function listFormat(name, id) {
+    var htmls = $(
       '<li class="box">' +
         '<div class="searched_user"></div>' +
         '<input type="hidden" class="user_id" name="" value="">' +
-        '<a href="javascript:void(0)" class="add_button">追加</a>' +
+        '<a href="javascript:void(0)" class="add_remove_button"></a>' +
       '</li>'
     )
     .find('.searched_user').text(name).end()
     .find('.user_id').val(id).end()
-    .appendTo(searched_user_list)
-    removeIdFromUserIds(id);
+    return htmls
   };
-
-  function appendAddList(name, id){
-    $(
-      '<li class="box">' +
-        '<div class="searched_user"></div>' +
-        '<input type="hidden" class="user_id" name="group[user_ids][]" value="">' +
-        '<a href="javascript:void(0)" class="remove_button">削除</a>' +
-      '</li>' )
-    .find('.searched_user').text(name).end()
-    .find('.user_id').val(id).end()
-    .appendTo(add_user_list)
-    user_ids.push(id)
-  };
-
 
   $('body').on('click', '.add_button' , function() {
     var name = $(this).siblings('.searched_user').text()
     var id = Number($(this).siblings('.user_id').val())
-    appendAddList(name, id)
+    appendGroupMemberList(name, id)
     $(this).parent().remove()
   });
 
