@@ -17,7 +17,7 @@
   .chat-group-form__field--left
     = f.label :チャットメンバー, class: 'chat-group-form__label'
   .chat-group-form__field--right
-    %ul#add_user_list
+    %ul#group_user_list
       %li.box
         （ログイン中のユーザー）
         .searched_user #{current_user.name}
