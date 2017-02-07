@@ -8,15 +8,15 @@ CarrierWave.configure do |config|
 
   case Rails.env
     when 'production'
-      config.fog_directory = 'koheikishimoto'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/koheikishimoto'
+      config.fog_directory = 'chatspace-production'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chatspace-production'
 
     when 'development'
-      config.fog_directory = 'kkishimotok-development'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kkishimotok-development'
+      config.fog_directory = 'chatspace-development'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chatspace-development'
 
     when 'test'
-      config.fog_directory = 'kkishimotok-test'
-      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kkishimotok-test'
+      config.fog_directory = 'chatspace-testtest'
+      config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/chatspace-testtest'
   end
 end
