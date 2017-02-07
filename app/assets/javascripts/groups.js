@@ -1,11 +1,15 @@
 $(function() {
   user_ids = [Number($('.current_user_id').val())];
   var searched_user_list = $("#searched_user_list");
-  var add_user_list = $("#add_user_list")
+  var group_user_list = $("#group_user_list")
 
   // group edit の実装
   var group_users = gon.users
-  appendAddLoop(group_users)
+  appendGroupUserLoop(group_users)
+
+  function removeIdFromUserIds(id) {
+    user_ids = user_ids.filter(function(v) { return v != id; });
+  }
 
   function appendSearchLoop(users) {
     $.each(users,
@@ -17,50 +21,53 @@ $(function() {
     );
   };
 
-  function appendAddLoop(users) {
+  function appendGroupUserLoop(users) {
     $.each(users,
       function (index, user) {
         if ( !( user_ids.includes(user.id) ) ) {
-          appendAddList(user.name, user.id)
+          appendGroupUserList(user.name, user.id)
         };
       }
     );
   };
 
   function appendSeacrhList(name, id){
-    var user_data = $(
-      '<li class="box">' +
-        '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" class="user_id" name="" value="' + id + '">' +
-        '<a href="javascript:void(0)" class="add_button">追加</a>' +
-      '</li>' );
-    searched_user_list.append(user_data);
-    // user_idsからidを削除
-    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
+    listFormat(name, id)
+    .find('.add_remove_button').text('追加').attr('class', 'add_remove_button add_button').end()
+    .appendTo(searched_user_list)
   };
 
-  function appendAddList(name, id){
-    var user_data = $(
-      '<li class="box">' +
-        '<div class="searched_user">' + name + '</div>' +
-        '<input type="hidden" class="user_id" name="group[user_ids][]" value="' + id + '">' +
-        '<a href="javascript:void(0)" class="remove_button">削除</a>' +
-      '</li>' );
-    add_user_list.append(user_data);
+  function appendGroupUserList(name, id){
     user_ids.push(id)
+    listFormat(name, id)
+    .find('.user_id').attr('name', 'group[user_ids][]').end()
+    .find('.add_remove_button').text('削除').attr('class', 'add_remove_button remove_button').end()
+    .appendTo(group_user_list)
+  };
+
+  function listFormat(name, id) {
+    var htmls = $(
+      '<li class="box">' +
+        '<div class="searched_user"></div>' +
+        '<input type="hidden" class="user_id" name="" value="">' +
+        '<a href="javascript:void(0)" class="add_remove_button"></a>' +
+      '</li>'
+    )
+    .find('.searched_user').text(name).end()
+    .find('.user_id').val(id).end()
+    return htmls
   };
 
   $('body').on('click', '.add_button' , function() {
     var name = $(this).siblings('.searched_user').text()
     var id = Number($(this).siblings('.user_id').val())
-    appendAddList(name, id)
+    appendGroupUserList(name, id)
     $(this).parent().remove()
   });
 
   $('body').on('click', '.remove_button' , function() {
     var id = Number($(this).siblings('.user_id').val())
-    // user_idsからidを削除
-    user_ids = jQuery.grep(user_ids, function(user_id) { return user_id != id; });
+    removeIdFromUserIds(id);
     $(this).parent().remove()
   });
 
