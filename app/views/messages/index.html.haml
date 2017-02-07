@@ -20,7 +20,6 @@
           = group_user.user.name
     .right__content
       = render partial: "shared/message", collection: @messages
-
     .right__footer
       = form_for([@group, @message]) do |f|
         = f.text_field :body, placeholder: "type your message, yeah!!!", class: 'form right__footer__box'
