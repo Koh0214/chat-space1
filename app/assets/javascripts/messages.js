@@ -16,28 +16,15 @@ $(function() {
     .appendTo($('div.right__content'))
   };
 
-  function appendAddList(name, id){
-    $(
-      '<li class="box">' +
-        '<div class="searched_user"></div>' +
-        '<input type="hidden" class="user_id" name="group[user_ids][]" value="">' +
-        '<a href="javascript:void(0)" class="remove_button">削除</a>' +
-      '</li>' )
-    .find('.searched_user').text(name).end()
-    .find('.user_id').val(id).end()
-    .appendTo(add_user_list)
-    user_ids.push(id)
-  };
-
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var group_id = $('.group_id').val();
 
-    var fd = new FormData($('form').get(0))
+    var formData = new FormData($('form').get(0))
     $.ajax({
       type: 'POST',
       url: '/groups/' + group_id + '/messages',
-      data: fd,
+      data: formData,
       processData: false,
       contentType: false,
       dataType: 'json'
