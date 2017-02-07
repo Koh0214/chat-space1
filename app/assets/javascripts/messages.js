@@ -19,7 +19,6 @@ $(function() {
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var group_id = $('.group_id').val();
-
     var formData = new FormData($('form').get(0))
     $.ajax({
       type: 'POST',
@@ -41,7 +40,7 @@ $(function() {
 
   $(window).load(function(){
     var left_height = $('.left__content').height();
-    $('.right__content').height(left_height);
+    $('.right__content').height(left_height - 120);
   })
 
 });
