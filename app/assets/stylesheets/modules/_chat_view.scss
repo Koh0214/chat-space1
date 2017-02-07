@@ -9,7 +9,6 @@
 }
 
 .content{
-  height: 100vw;
   min-width: 980px;
 }
 
@@ -23,14 +22,12 @@
   }
   &__content{
     background-color: #2f3e51;
-    height: calc(100% - 41px);
     padding: 0 20px;
   }
 }
 
 .right{
   width:calc(100vw - 315px);
-  height: 100%;
   float: left;
   &__header{
     background-color: white;
@@ -39,22 +36,24 @@
   }
   &__content{
     background-color: #FAFAFA;
-    height: calc(100% + 94px);
     width: 971px;
-    padding: 0 40px 70px;
+    padding: 0 40px;
     overflow: auto;
+  }
+  &__margin{
+    height: 120px;
   }
   &__footer{
     background-color: #DDDDDD;
     height: 90px;
     width: calc(100% - 300px);
     position: fixed; right: 0; bottom: 0;
-  }
-  &__footer__box{
-    background-color: white;
-    height: 50px;
-    width: calc(100% - 250px);
-    margin: 20px 20px 20px 40px;
-    padding: 0 15px;
+    &__box{
+      background-color: white;
+      height: 50px;
+      width: calc(100% - 250px);
+      margin: 20px 20px 20px 40px;
+      padding: 0 15px;
+    }
   }
 }
