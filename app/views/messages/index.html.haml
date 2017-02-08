@@ -6,7 +6,7 @@
       = render partial: "shared/left__content", locals: {groups: current_user.groups}
   .right
     .right__header
-      = render partial: "shared/right__header"
+      = render partial: "shared/right__header", locals: {group: @group}
     .right__content
       = render partial: "shared/right__content", locals: {messages: @messages}
     .right__footer
