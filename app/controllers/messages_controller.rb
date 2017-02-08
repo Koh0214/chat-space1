@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user_info
 
   def index
     @group = Group.find(params[:group_id])
@@ -8,15 +9,13 @@ class MessagesController < ApplicationController
     @messages = @group.messages
 
     last_message = @group.messages.last
+    gon.last_message_name = last_message.user.name
+    gon.group_id = @group.id
 
     respond_to do |format|
-      format.html
+      format.html {return}
       format.json { render json: last_message }
     end
-
-    gon.group_id = @group.id
-    gon.current_user_name = current_user.name
-    gon.last_message_name = last_message.user.name
   end
 
   def create
@@ -35,5 +34,9 @@ class MessagesController < ApplicationController
 
   def set_params
     params.require(:message).permit(:body, :image, :image_cache).merge(group_id: params[:group_id], user_id: current_user.id)
+  end
+
+  def set_current_user_info
+    gon.current_user_name = current_user.name
   end
 end
