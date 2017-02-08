@@ -6,4 +6,7 @@
 @import "./modules/contents";
 @import "./modules/user";
 @import "./modules/group";
-@import "./modules/add-member-to-group";
+
+// group incremental search
+@import "./modules/group_list";
+@import "./modules/buttons";
