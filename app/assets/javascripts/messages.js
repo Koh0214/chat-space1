@@ -18,7 +18,7 @@ $(function() {
 
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
-    var group_id = $('.group_id').val();
+    var group_id = gon.group_id;
     var formData = new FormData($(this).get(0))
     $.ajax({
       type: 'POST',
@@ -29,7 +29,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      data.name = $('.current_user_name').val();
+      data.name = gon.current_user_name;
       build_message(data);
       $('#message_body').val('');
     })

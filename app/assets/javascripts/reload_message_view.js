@@ -15,7 +15,7 @@ $(function() {
     .appendTo($('div.right__content'))
   };
 
-  var group_id = $('.group_id').val();
+  var group_id = gon.group_id
 
   if (!(group_id.isEmpty)) {
     setInterval(function() {
