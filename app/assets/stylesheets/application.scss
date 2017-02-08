@@ -2,8 +2,17 @@
 @import "font-awesome";
 @import "./config/variables";
 @import "./mixin/clearfix";
+
+// index view
 @import "./modules/chat_view";
 @import "./modules/contents";
+
+// new & edit user
 @import "./modules/user";
+
+// new & edit group
 @import "./modules/group";
-@import "./modules/add-member-to-group";
+
+// group incremental search
+@import "./modules/group_list";
+@import "./modules/buttons";

@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_current_user_info
 
   def index
     @group = Group.find(params[:group_id])
@@ -7,10 +8,13 @@ class MessagesController < ApplicationController
     @message = Message.new
     @messages = @group.messages
 
+    # メッセージの自動更新
     last_message = @group.messages.last
-    gon.last_message_name = @group.messages.last.user.name
+    gon.last_message_name = last_message.user.name if last_message.present?
+    gon.group_id = @group.id
+
     respond_to do |format|
-      format.html
+      format.html {return}
       format.json { render json: last_message }
     end
   end
@@ -32,4 +36,5 @@ class MessagesController < ApplicationController
   def set_params
     params.require(:message).permit(:body, :image, :image_cache).merge(group_id: params[:group_id], user_id: current_user.id)
   end
+
 end

@@ -1,32 +1,13 @@
 .content
   .left
     .left__header
-      .icons
-        = link_to new_group_path do
-          %i.fa.fa-pencil-square-o{ aria: { hidden: true } }
-        = link_to edit_user_registration_path do
-          %i.fa.fa-cog{ aria: { hidden: true } }
-      %h5.user_name #{ current_user.name }
+      = render partial: "shared/left__header"
     .left__content
-      = render partial: "shared/group", collection: @groups
+      = render @groups
   .right
     .right__header
-      = link_to edit_group_path(@group) do
-        %p.edit_button Edit
-      %h4.group_name #{ @group.name }
-      %p.group_member
-        Members:
-        - @group.group_users.each do |group_user|
-          = group_user.user.name
+      = render partial: "right/right__header", locals: {group: @group}
     .right__content
-      = render partial: "shared/message", collection: @messages
+      = render @messages
     .right__footer
-      = form_for([@group, @message]) do |f|
-        = f.text_field :body, placeholder: "type a message here!", class: 'form right__footer__box'
-        %i.fa.fa-picture-o{ aria: { hidden: true } }
-        = image_tag @message.image.url if @message.image?
-        = f.file_field :image
-        = f.hidden_field :image_cache
-        = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
-        %input{name: "group_id", type: "hidden", value: @group.id, class: 'group_id' }/
-        %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
+      = render partial: "right/right__footer", locals: {group: @group, message: @message}
