@@ -40,4 +40,8 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
+
+  def set_current_user_info
+    gon.current_user_id = current_user.id
+  end
 end
