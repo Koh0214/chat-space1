@@ -8,11 +8,15 @@ class MessagesController < ApplicationController
     @messages = @group.messages
 
     last_message = @group.messages.last
-    gon.last_message_name = @group.messages.last.user.name
+
     respond_to do |format|
       format.html
       format.json { render json: last_message }
     end
+
+    gon.group_id = @group.id
+    gon.current_user_name = current_user.name
+    gon.last_message_name = last_message.user.name
   end
 
   def create
