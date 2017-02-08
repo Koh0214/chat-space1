@@ -9,7 +9,6 @@
 }
 
 .content{
-  min-width: 980px;
 }
 
 .left {
@@ -31,19 +30,21 @@
   float: left;
   &__header{
     background-color: white;
+    min-width: 600px;
     height: 101px;
     padding: 0 40px;
   }
   &__content{
     background-color: #FAFAFA;
-    width: 971px;
+    min-width: 600px;
     padding: 0 40px 120px;
     overflow: auto;
   }
   &__footer{
     background-color: #DDDDDD;
-    height: 90px;
     width: calc(100% - 300px);
+    min-width: 400px;
+    height: 90px;
     position: fixed; right: 0; bottom: 0;
     &__box{
       background-color: white;
