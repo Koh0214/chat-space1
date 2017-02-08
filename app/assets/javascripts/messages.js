@@ -19,8 +19,7 @@ $(function() {
   $('.new_message').on('submit', function(e) {
     e.preventDefault();
     var group_id = $('.group_id').val();
-
-    var formData = new FormData($('form').get(0))
+    var formData = new FormData($(this).get(0))
     $.ajax({
       type: 'POST',
       url: '/groups/' + group_id + '/messages',
@@ -38,4 +37,5 @@ $(function() {
       alert('送信に失敗しました。');
     });
   });
+
 });
