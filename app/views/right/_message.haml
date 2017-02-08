@@ -1,0 +1,7 @@
+%h5.post_name
+  = message.user.name
+%p.timestamp
+  = message.created_at
+%p.post
+  = message.body
+  = image_tag message.image.url if message.image?
