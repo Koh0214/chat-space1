@@ -6,6 +6,13 @@ class MessagesController < ApplicationController
     @groups = current_user.groups
     @message = Message.new
     @messages = @group.messages
+
+    last_message = @group.messages.last
+    gon.last_message_name = @group.messages.last.user.name
+    respond_to do |format|
+      format.html
+      format.json { render json: last_message }
+    end
   end
 
   def create
