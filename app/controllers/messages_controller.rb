@@ -36,7 +36,4 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:body, :image, :image_cache).merge(group_id: params[:group_id], user_id: current_user.id)
   end
 
-  def set_current_user_info
-    gon.current_user_name = current_user.name
-  end
 end
