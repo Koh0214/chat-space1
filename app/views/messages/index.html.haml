@@ -3,7 +3,7 @@
     .left__header
       = render partial: "shared/left__header"
     .left__content
-      = render partial: "shared/group", collection: @groups
+      = render partial: "shared/left__content", locals: {groups: current_user.groups}
   .right
     .right__header
       = render partial: "shared/right__header"
