@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     @messages = @group.messages
 
     last_message = @group.messages.last
-    gon.last_message_name = last_message.user.name
+    gon.last_message_name = last_message.user.name if last_message.present?
     gon.group_id = @group.id
 
     respond_to do |format|
