@@ -40,6 +40,10 @@
     padding: 0 40px 120px;
     overflow: auto;
   }
+  // contentのスクロールバーを消す
+  &__content::-webkit-scrollbar {
+    display: none;
+  }
   &__footer{
     background-color: #DDDDDD;
     width: calc(100% - 300px);
