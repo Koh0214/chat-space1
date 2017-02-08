@@ -3,11 +3,11 @@
     .left__header
       = render partial: "shared/left__header"
     .left__content
-      = render partial: "shared/left__content", locals: {groups: current_user.groups}
+      = render partial: "shared/group", collection: @groups
   .right
     .right__header
-      = render partial: "shared/right__header", locals: {group: @group}
+      = render partial: "right/right__header", locals: {group: @group}
     .right__content
-      = render partial: "shared/right__content", locals: {messages: @messages}
+      = render partial: "right/message", collection: @messages
     .right__footer
-      = render partial: "shared/right__footer", locals: {group: @group, message: @message}
+      = render partial: "right/right__footer", locals: {group: @group, message: @message}
