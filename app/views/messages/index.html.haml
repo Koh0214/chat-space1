@@ -1,13 +1,13 @@
 .content
   .left
     .left__header
-      =render partial: "shared/left__header"
+      = render partial: "shared/left__header"
     .left__content
       = render partial: "shared/group", collection: @groups
   .right
     .right__header
       = render partial: "shared/right__header"
     .right__content
-      = render partial: "shared/message", collection: @messages
+      = render partial: "shared/right__content", locals: {messages: @messages}
     .right__footer
       = render partial: "shared/right__footer"
