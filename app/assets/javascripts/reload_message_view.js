@@ -26,8 +26,8 @@ $(function() {
         dataType: 'json'
       })
       .done(function(last_message) {
-        last_message.name = gon.last_message_name
-        if (last_message.created_at !== $('.right__content .timestamp').last().text()) {
+        if (last_message.length && last_message.created_at !== $('.right__content .timestamp').last().text()) {
+          last_message.name = gon.last_message_name
           build_message(last_message)
         }
       })
