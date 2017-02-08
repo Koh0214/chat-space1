@@ -1,5 +1,5 @@
 $(function() {
-  function build_message(data) {
+  function build_message(last_message) {
     $(
       '<li style="list-style:none;" >' +
         '<h5 class="post_name"></h5>' +
@@ -8,10 +8,10 @@ $(function() {
         '<img src="" class="image">' +
       '</li>'
     )
-    .find('.post_name').text(data.name).end()
-    .find('.timestamp').text(data.created_at).end()
-    .find('.post').text(data.body).end()
-    .find('.image').attr('src', data.image.url).end()
+    .find('.post_name').text(last_message.name).end()
+    .find('.timestamp').text(last_message.created_at).end()
+    .find('.post').text(last_message.body).end()
+    .find('.image').attr('src', last_message.image.url).end()
     .appendTo($('div.right__content'))
   };
 
