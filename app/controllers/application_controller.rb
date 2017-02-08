@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
+  def set_current_user_info
+    gon.current_user_id = current_user.id
+    gon.current_user_name = current_user.name
+  end
+
 end
