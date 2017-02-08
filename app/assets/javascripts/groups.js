@@ -1,5 +1,5 @@
 $(function() {
-  user_ids = [Number($('.current_user_id').val())];
+  user_ids = [Number(gon.current_user_id)];
   var searched_user_list = $("#searched_user_list");
   var group_user_list = $("#group_user_list")
 
