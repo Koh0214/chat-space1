@@ -28,5 +28,3 @@
         = f.file_field :image
         = f.hidden_field :image_cache
         = f.button :Send, class: 'send_button', html: { data: { disable: { with: "Save" }}, name: "commit", type: "submit", value: "Save" }
-        %input{name: "group_id", type: "hidden", value: @group.id, class: 'group_id' }/
-        %input{name: "current_user_name", type: "hidden", value: current_user.name, class: 'current_user_name' }/
