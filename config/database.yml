@@ -15,7 +15,10 @@ default: &default
   pool: 5
   username: root
   password:
-  socket: /tmp/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
+
+production:
+  
 
 development:
   <<: *default
@@ -50,5 +53,7 @@ test:
 production:
   <<: *default
   database: chat-space_production
-  username: chat-space
-  password: <%= ENV['CHAT-SPACE_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  aws_access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  aws_secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
