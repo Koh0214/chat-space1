@@ -21,9 +21,8 @@ $(function() {
     setInterval(function() {
       $.ajax({
         type: 'GET',
-        url: '/groups/' + group_id + '/messages',
-        data: {},
-        dataType: 'json'
+        url: '/groups/' + group_id + '/messages.json',
+        data: {}
       })
       .done(function(last_message) {
         if (last_message.length && last_message.created_at !== $('.right__content .timestamp').last().text()) {
@@ -32,7 +31,7 @@ $(function() {
         }
       })
       .fail(function(users) {
-        alert('メッセージの送信に失敗してますよ')
+        console.log('最終メッセージの解析に失敗');
       });
     },1000);
   }
