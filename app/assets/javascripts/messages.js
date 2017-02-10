@@ -22,7 +22,7 @@ $(function() {
     var formData = new FormData($(this).get(0))
     $.ajax({
       type: 'POST',
-      url: '/groups/' + group_id + '/messages',
+      url: '/groups/' + group_id + '/messages.json',
       data: formData,
       processData: false,
       contentType: false,
