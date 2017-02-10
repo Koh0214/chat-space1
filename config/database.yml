@@ -18,7 +18,7 @@ default: &default
   socket: /var/lib/mysql/mysql.sock
 
 production:
-  
+
 
 development:
   <<: *default

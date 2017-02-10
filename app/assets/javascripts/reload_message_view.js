@@ -16,24 +16,24 @@ $(function() {
   };
 
   var group_id = gon.group_id
-
-  if (!(group_id.isEmpty)) {
-    setInterval(function() {
-      $.ajax({
-        type: 'GET',
-        url: '/groups/' + group_id + '/messages.json',
-        data: {}
-      })
-      .done(function(last_message) {
-        if (last_message.length && last_message.created_at !== $('.right__content .timestamp').last().text()) {
-          last_message.name = gon.last_message_name
-          build_message(last_message)
-        }
-      })
-      .fail(function(users) {
-        console.log('最終メッセージの解析に失敗');
-      });
-    },1000);
-  }
+  // 
+  // if (!(group_id.isEmpty)) {
+  //   setInterval(function() {
+  //     $.ajax({
+  //       type: 'GET',
+  //       url: '/groups/' + group_id + '/messages.json',
+  //       data: {}
+  //     })
+  //     .done(function(last_message) {
+  //       if (last_message.length && last_message.created_at !== $('.right__content .timestamp').last().text()) {
+  //         last_message.name = gon.last_message_name
+  //         build_message(last_message)
+  //       }
+  //     })
+  //     .fail(function(users) {
+  //       console.log('最終メッセージの解析に失敗');
+  //     });
+  //   },1000);
+  // }
 
 });
